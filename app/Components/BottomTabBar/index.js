@@ -1,0 +1,164 @@
+import React from 'react';
+import {View, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
+import {NavigationContext} from '@react-navigation/native';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Text} from '@Components';
+import {Colors} from '@Theme';
+function BottomTabBar({state, descriptors, navigation}) {
+  const handleHomeButton = () => {
+    /*  if (navIndex === navIndexStore && navIndexStore === 0) {
+      uiStore.setUpdatePage()
+    } else {
+      uiStore.setNavIndexStore(0)
+    } */
+    navigation.navigate('Home');
+  };
+  const handleSettingsButton = () => {
+    navigation.navigate('PurchasedProductsPage');
+  };
+
+  const handleSearchButton = () => {
+    /*  if (navIndex === navIndexStore && navIndexStore === 1) {
+      uiStore.setUpdatePage()
+    } else {
+      uiStore.setNavIndexStore(1)
+    } */
+    /* Search butonuna basıldıgında kategoriler gözükmesini set eder */
+    // searchStore.setSearchViewType(SEARCH_VIEW_TYPES.CATEGORY)
+    // searchStore.setSearchFirstOpen(true)
+    navigation.navigate('Search');
+  };
+
+  const handleListButton = async () => {
+    // const vendor = await AsyncStorage.getItem('vendor')
+    // buyForMeStore.showCart(vendor, cookie, email, password)
+
+    // buyForMeStore.minimumOrder(vendor, cookie, email, password)
+
+    // buyForMeStore.showTimeSlots(vendor, cookie, email, password)
+
+    // buyForMeStore.getVendors(vendors)
+
+    navigation.navigate('MyList');
+  };
+
+  return (
+    <SafeAreaView>
+      <View style={styles.container}>
+        {state.routes.map((route, index) => {
+          const {options} = descriptors[route.key];
+          const label =
+            options.tabBarLabel !== undefined
+              ? options.tabBarLabel
+              : options.title !== undefined
+              ? options.title
+              : route.name;
+
+          const isFocused = state.index === index;
+
+          const onPress = () => {
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+            });
+
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
+
+          const onLongPress = () => {
+            navigation.emit({
+              type: 'tabLongPress',
+              target: route.key,
+            });
+          };
+
+          return (
+            <TouchableOpacity
+              accessibilityRole="button"
+              accessibilityStates={isFocused ? ['selected'] : []}
+              accessibilityLabel={options.tabBarAccessibilityLabel}
+              testID={options.tabBarTestID}
+              onPress={onPress}
+              onLongPress={onLongPress}
+              key={label}
+              style={styles.itemContainer}>
+              {label === 'Home' && (
+                <Fontisto
+                  name="shopping-store"
+                  color={isFocused ? Colors.PRIMARY : Colors.DARK}
+                  size={24}
+                />
+              )}
+              {label === 'Search' && (
+                <Fontisto
+                  name="search"
+                  color={isFocused ? Colors.PRIMARY : Colors.DARK}
+                  size={24}
+                />
+              )}
+
+              {label === 'MyList' && (
+                <Fontisto
+                  name="shopping-basket"
+                  color={isFocused ? Colors.PRIMARY : Colors.DARK}
+                  size={24}
+                />
+              )}
+
+              {label === 'Profile' && (
+                <>
+                  <MaterialCommunityIcons
+                    name="account-circle-outline"
+                    color={isFocused ? Colors.PRIMARY : Colors.DARK}
+                    size={28}
+                  />
+                </>
+              )}
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    </SafeAreaView>
+  );
+}
+
+export default BottomTabBar;
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    backgroundColor: Colors.GREY_LIGHTEST,
+  },
+  itemContainer: {
+    padding: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 18,
+    paddingRight: 18,
+  },
+  activeItemContainer: {
+    backgroundColor: Colors.GREY_LIGHTEST,
+  },
+  activeTitle: {
+    color: 'red',
+  },
+  badgeContainer: {
+    position: 'absolute',
+    right: 16,
+    top: 2,
+    height: 24,
+    width: 24,
+    borderRadius: 12,
+    backgroundColor: 'white',
+    zIndex: 99,
+  },
+  badgeContent: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
