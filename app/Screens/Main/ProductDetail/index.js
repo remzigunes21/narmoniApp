@@ -14,7 +14,7 @@ export class ProductDetail extends Component {
   render() {
     return (
       <NrmContainer style={styles.container}>
-        <ScrollView>
+        <ScrollView style={{flex: 4}}>
           <NrmCard style={styles.card}>
             <View
               style={{
@@ -58,15 +58,60 @@ export class ProductDetail extends Component {
             </View>
           </NrmCard>
 
-          <View
-            style={{
-              flex: 2,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: 'blue',
-            }}>
-            <Image source={Images.bear} style={{width: 80, height: 80}} />
-          </View>
+          <NrmCard style={styles.colorCardContainer}>
+            <View
+              style={{
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
+              }}>
+              <NrmText.T2D style={{}}>Renk</NrmText.T2D>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-evenly',
+                  alignItems: 'center',
+                }}>
+                <TouchableOpacity
+                  style={[styles.buttonMl, {marginHorizontal: 24}]}>
+                  <NrmText.T2D style={styles.textCard}>
+                    Pembenin Gücü
+                  </NrmText.T2D>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.buttonMl, {marginHorizontal: 24}]}>
+                  <NrmText.T2D style={styles.textCard}>
+                    Sarı sarı kimin yarı
+                  </NrmText.T2D>
+                </TouchableOpacity>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <NrmText.T2D style={{fontSize: 16, fontWeight: 'bold'}}>
+                  +4
+                </NrmText.T2D>
+                <TouchableOpacity>
+                  <NrmIcon
+                    name="angle-right"
+                    size={32}
+                    type="Fontisto"
+                    color={Colors.GREY_COLOR_LIGHT}
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </NrmCard>
         </ScrollView>
       </NrmContainer>
     );
@@ -76,9 +121,9 @@ export class ProductDetail extends Component {
 export default ProductDetail;
 
 const styles = StyleSheet.create({
-  container: {flex: 4},
+  container: {},
   card: {
-    flex: 2,
+    flex: 1,
 
     justifyContent: 'center',
     alignItems: 'center',
@@ -87,7 +132,7 @@ const styles = StyleSheet.create({
   },
   icon: {},
 
-  textCard: {textAlign: 'center', alignSelf: 'center', fontSize: 10},
+  textCard: {textAlign: 'center', alignSelf: 'center', fontSize: 12},
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
@@ -95,8 +140,13 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   buttonMl: {
-    backgroundColor: Colors.ORANGE_LIGHT,
+    backgroundColor: Colors.VIOLAET,
     borderRadius: 15,
     padding: 4,
+  },
+
+  colorCardContainer: {
+    flex: 2,
+    marginVertical: 12,
   },
 });

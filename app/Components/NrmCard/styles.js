@@ -5,7 +5,7 @@ export default StyleSheet.create({
   container: {
     backgroundColor: Colors.WHITE,
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 4,
     shadowColor: Colors.GREY,
     shadowOffset: {
       width: 0,
