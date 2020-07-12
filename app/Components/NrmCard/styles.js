@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors } from '@Theme'
+import {StyleSheet} from 'react-native';
+import {Colors} from '../../Theme';
 
 export default StyleSheet.create({
   container: {
@@ -15,4 +15,4 @@ export default StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-})
+});

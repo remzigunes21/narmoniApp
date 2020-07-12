@@ -14,6 +14,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Zocial from 'react-native-vector-icons/Zocial';
+import {Colors} from '../../Theme';
 
 const defaultPadding = 8;
 
@@ -44,10 +45,11 @@ function getIonicon({name, size, ...props}) {
   return <Ionicon {...props} name={name} size={size} />;
 }
 
-const NrmIcon = ({name, color, style, size, type}) => {
-  if (!props.name) return null;
+const NrmIcon = ({name, color, style, size, type, ...props}) => {
+  const iconProps = {name, color, style, size};
+  if (!name) return null;
   const newSize = getSize(props.size);
-  const newColor = color || colors.black;
+  const newColor = color || Colors.BLACK;
   switch (type) {
     case 'AntDesign':
       return <AntDesign {...iconProps} />;

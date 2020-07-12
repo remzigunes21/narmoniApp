@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 import NrmIcon from '../NrmIcon';
-import {Colors} from '@Theme';
+import {Colors} from '../../Theme';
 
 const NrmInput = ({autoFocus, icon, placeholder, ...props}) => {
   //   onChangeText(text) {

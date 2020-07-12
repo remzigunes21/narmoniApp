@@ -17,6 +17,8 @@ import NrmButton from './NrmButton';
 import NrmText from './NrmText';
 import NrmInput from './NrmInput';
 
+import NrmHeader from './NrmHeader';
+
 export {
   NrmCard,
   NrmContainer,
@@ -33,4 +35,5 @@ export {
   NrmButton,
   NrmText,
   NrmInput,
+  NrmHeader,
 };

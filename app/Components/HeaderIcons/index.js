@@ -1,11 +1,11 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {Icon} from '@components/widgets';
+import NrmIcon from '../NrmIcon';
 
 export const HeaderIcon = ({onPress, ...props}) => (
   <TouchableOpacity onPress={onPress}>
     <View style={styles.container}>
-      <Icon {...props} />
+      <NrmIcon {...props} />
     </View>
   </TouchableOpacity>
 );

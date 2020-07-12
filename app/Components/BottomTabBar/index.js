@@ -3,8 +3,8 @@ import {View, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 import {NavigationContext} from '@react-navigation/native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Text} from '@Components';
-import {Colors} from '@Theme';
+
+import {Colors} from '../../Theme';
 function BottomTabBar({state, descriptors, navigation}) {
   const handleHomeButton = () => {
     /*  if (navIndex === navIndexStore && navIndexStore === 0) {

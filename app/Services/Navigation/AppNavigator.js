@@ -1,45 +1,41 @@
 import React from 'react';
-import {Easing, Animated, View, Text} from 'react-native';
-
+import {Easing, Animated, TouchableOpacity, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+////////////////////Continer
+import ListActionsModal from '../../Containers/Modals/ListActionsModal';
+import ProductImageModal from '../../Containers/Modals/ProductImageModal';
+import SelectListModal from '../../Containers/Modals/SelectListModal';
+import EditPurchaseModal from '../../Containers/Modals/EditPurchaseModal';
+import ChangeSkuAmountModal from '../../Containers/Modals/ChangeSkuAmountModal';
+import WhyNarmoniModal from '../../Containers/Modals/WhyNarmoniModal';
+import ReplacedSkuModal from '../../Containers/Modals/ReplacedSkuModal';
+import AreYouSureModal from '../../Containers/Modals/AreYouSureModal';
+import ChangePasswordModal from '../../Containers/Modals/ChangePasswordModal';
+import PurchasedProductsPage from '../../Containers/PurchasedProductsPage';
+///////////////////Container//////
 
-import {CustomHeader} from '@Components';
-import {Screen, Colors} from '@Theme';
-
-import Login from '@Screens/Authentication/Login';
-import ForgotPassword from '@Screens/Authentication/ForgotPassword';
-import ProductDetailFromLocal from '@Screens/Main/ProductDetail/fromLocal';
-
-import Home from '@Screens/Main/Home';
-import ProductDetail from '@Screens/Main/ProductDetail';
-
-import SharedList from '@Screens/Main/SharedList';
-import Settings from '@Screens/Main/Settings';
-
-import ListActionsModal from '@Containers/Modals/ListActionsModal';
-import ProductImageModal from '@Containers/Modals/ProductImageModal';
-import SelectListModal from '@Containers/Modals/SelectListModal';
-import EditPurchaseModal from '@Containers/Modals/EditPurchaseModal';
-import ChangeSkuAmountModal from '@Containers/Modals/ChangeSkuAmountModal';
-import ProfileSettings from '@Screens/Main/Settings/ProfileSettings';
-import WhyNarmoniModal from '@Containers/Modals/WhyNarmoniModal';
-import ReplacedSkuModal from '@Containers/Modals/ReplacedSkuModal';
-import AreYouSureModal from '@Containers/Modals/AreYouSureModal';
-import ChangePasswordModal from '@Containers/Modals/ChangePasswordModal';
-import LocationSettings from '@Screens/Main/Settings/LocationSettings';
-import BottomTabBar from '@Components/BottomTabBar';
-import PurchasedProductsPage from '@Containers/PurchasedProductsPage';
-
-import MyList from '@Screens/Main/MyList';
-import Search from '@Screens/Main/Search/Search';
-import MarketFilterModal from '@Screens/Main/Search/MarketFilterModal';
-import SortModal from '@Screens/Main/Search/SortModal';
-import ScanBarcode from '@Screens/Main/Search/ScanBarcode';
-import WebViews from '../../Screens/Main/Webview/index';
-import KeyChainScreen from '../../Screens/BuyForMe/KeyChainScreen';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+//////////////////Screens/////////
+import ProfileSettings from '../../Screens/Main/Settings/ProfileSettings';
+import LocationSettings from '../../Screens/Main/Settings/LocationSettings';
+import MyList from '../../Screens/Main/MyList';
+import Search from '../../Screens/Main/Search/Search';
+import MarketFilterModal from '../../Screens/Main/Search/MarketFilterModal';
+import SortModal from '../../Screens/Main/Search/SortModal';
+import ScanBarcode from '../../Screens/Main/Search/ScanBarcode';
+import Login from '../../Screens/Authentication/Login';
+import ForgotPassword from '../../Screens/Authentication/ForgotPassword';
+import ProductDetailFromLocal from '../../Screens/Main/ProductDetail/fromLocal';
+import Home from '../../Screens/Main/Home';
+import ProductDetail from '../../Screens/Main/ProductDetail';
+import SharedList from '../../Screens/Main/SharedList';
+import Settings from '../../Screens/Main/Settings';
+//////////////////Screens/////////
+import BottomTabBar from '../../Components/BottomTabBar';
+import {CustomHeader} from '../../Components/CustomHeader';
+import {Screen, Colors} from '../../Theme';
+import {NrmHeader} from '../../Components';
 
 const HomeStack = createStackNavigator();
 
@@ -116,15 +112,49 @@ const ListStackNavigator = () => {
       <ListStack.Screen
         name="ProductDetail"
         component={ProductDetail}
-        options={() => ({
+        options={({navigation}) => ({
           gesturesEnabled: true,
           gestureDirection: 'horizontal',
           gestureResponseDistance: {horizontal: 300},
+          headerTintColor: Colors.GREY_COLOR_LIGHT,
+          headerStyle: {
+            backgroundColor: Colors.GREY_LIGHT,
+          },
 
+          title: '',
           headerLeft: () => (
-            <TouchableOpacity>
-              <Text>Hello</Text>
-            </TouchableOpacity>
+            <NrmHeader
+              onBack={() => navigation.navigate('Home')}
+              iconName="angle-left"
+              iconSize={24}
+              iconColor={Colors.WHITE}
+              iconType="Fontisto"
+            />
+          ),
+
+          headerRight: () => (
+            <View
+              style={{
+                flexDirection: 'row',
+
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <NrmHeader
+                onBack={() => navigation.navigate('Home')}
+                iconName="angle-left"
+                iconSize={24}
+                iconColor={Colors.WHITE}
+                iconType="Fontisto"
+              />
+              <NrmHeader
+                onBack={() => navigation.navigate('Home')}
+                iconName="heart-circle-outline"
+                iconSize={32}
+                iconColor={Colors.WHITE}
+                iconType="MaterialCommunityIcons"
+              />
+            </View>
           ),
         })}
       />

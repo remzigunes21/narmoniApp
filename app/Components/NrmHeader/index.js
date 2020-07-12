@@ -1,41 +1,50 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import Entypo from 'react-native-vector-icons/Entypo';
-import {Colors} from '@Theme';
+import {Colors} from '../../Theme';
+import NrmIcon from '../NrmIcon';
 
-function NrmHeader({onBack, rightIcons}) {
+const NrmHeader = ({
+  onBack,
+  iconName,
+  iconSize,
+  iconColor,
+  iconType,
+
+  ...props
+}) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onBack}>
-        <Entypo name="chevron-down" size={35} color={Colors.GREY_LIGHT} />
+      <TouchableOpacity onPress={onBack} style={styles.headerButton} {...props}>
+        <NrmIcon
+          name={iconName}
+          size={iconSize}
+          type={iconType}
+          color={iconColor}
+        />
       </TouchableOpacity>
-
-      <View style={styles.rightIconContainer}>{rightIcons}</View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 26,
-    paddingHorizontal: 25,
   },
-  rightIconContainer: {
-    flexDirection: 'row',
+  headerButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 8,
+    marginHorizontal: 2,
   },
 });
 
 NrmHeader.defaultProps = {
   onBack: () => null,
-  rightIcons: [],
 };
 
 NrmHeader.propTypes = {
   onBack: PropTypes.func,
-  rightIcons: PropTypes.arrayOf(PropTypes.element),
 };
 
 export default NrmHeader;

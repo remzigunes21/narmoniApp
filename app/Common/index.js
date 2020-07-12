@@ -1,4 +1,4 @@
-import Constants from './Constants'
-import { popup } from './Helpers'
+import Constants from './Constants';
+import {popup} from './Helpers';
 
-export { Constants, popup }
+export {Constants, popup};

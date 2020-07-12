@@ -9,7 +9,6 @@ import {Colors, Screen} from './app/theme';
 import Login from '.app/screens/Authentication/Login';
 import ForgotPassword from './app/screens/Authentication/ForgotPassword';
 
-import App from '../../../index';
 import Home from './app/screens/Main/Home ';
 import ProductDetail from '@Screens/Main/ProductDetail';
 import ProductDetailFromLocal from '@Screens/Main/ProductDetail/fromLocal';
@@ -17,25 +16,30 @@ import ProductDetailFromLocal from '@Screens/Main/ProductDetail/fromLocal';
 import SharedList from '@Screens/Main/SharedList';
 import Settings from '@Screens/Main/Settings';
 
-import ListActionsModal from '@Containers/Modals/ListActionsModal';
-import ProductImageModal from '@Containers/Modals/ProductImageModal';
-import SelectListModal from '@Containers/Modals/SelectListModal';
-import EditPurchaseModal from '@Containers/Modals/EditPurchaseModal';
-import ChangeSkuAmountModal from '@Containers/Modals/ChangeSkuAmountModal';
-import ProfileSettings from '@Screens/Main/Settings/ProfileSettings';
-import WhyNarmoniModal from '@Containers/Modals/WhyNarmoniModal';
-import ReplacedSkuModal from '@Containers/Modals/ReplacedSkuModal';
-import AreYouSureModal from '@Containers/Modals/AreYouSureModal';
-import ChangePasswordModal from '@Containers/Modals/ChangePasswordModal';
-import LocationSettings from '@Screens/Main/Settings/LocationSettings';
-import BottomTabBar from '@Components/BottomTabBar';
-import PurchasedProductsPage from '@Containers/PurchasedProductsPage';
+////////////////////Continer
 
-import MyList from '@Screens/Main/MyList';
-import Search from '@Screens/Main/Search/Search';
-import MarketFilterModal from '@Screens/Main/Search/MarketFilterModal';
-import SortModal from '@Screens/Main/Search/SortModal';
-import ScanBarcode from '@Screens/Main/Search/ScanBarcode';
+import ListActionsModal from './app/Containers/Modals/ListActionsModal';
+import ProductImageModal from './app/Containers/Modals/ProductImageModal';
+import SelectListModal from './app/Containers/Modals/SelectListModal';
+import EditPurchaseModal from './app/Containers/Modals/EditPurchaseModal';
+import ChangeSkuAmountModal from './app/Containers/Modals/ChangeSkuAmountModal';
+import WhyNarmoniModal from './app/Containers/Modals/WhyNarmoniModal';
+import ReplacedSkuModal from './app/Containers/Modals/ReplacedSkuModal';
+import AreYouSureModal from './app/Containers/Modals/AreYouSureModal';
+import ChangePasswordModal from './app/Containers/Modals/ChangePasswordModal';
+import PurchasedProductsPage from './app/Containers/PurchasedProductsPage';
+///////////////////Container
+
+import ProfileSettings from './app/Screens/Main/Settings/ProfileSettings';
+
+import LocationSettings from './app/Screens/Main/Settings/LocationSettings';
+import BottomTabBar from '@Components/BottomTabBar';
+
+import MyList from './app/Screens/Main/MyList';
+import Search from './app/Screens/Main/Search/Search';
+import MarketFilterModal from './app/Screens/Main/Search/MarketFilterModal';
+import SortModal from './app/Screens/Main/Search/SortModal';
+import ScanBarcode from './app/Screens/Main/Search/ScanBarcode';
 import WebViews from '../../Screens/Main/Webview/index';
 import KeyChainScreen from '../../Screens/BuyForMe/KeyChainScreen';
 
@@ -256,16 +260,7 @@ const MainTabsNavigator = () => {
         component={HomeStackNavigator}
         options={() => ({})}
       />
-      <MainTabs.Screen
-        name="WebViews"
-        component={WebViews}
-        options={() => ({})}
-      />
-      <MainTabs.Screen
-        name="KeyChainScreen"
-        component={KeyChainScreen}
-        options={() => ({})}
-      />
+
       <MainTabs.Screen
         name="Search"
         component={SearchStackNavigator}
@@ -312,7 +307,7 @@ const CreateMainNavigator = initialRouteName => {
         />
         <RootStack.Screen
           name="Main"
-          component={MainTabs}
+          component={MainTabsNavigator}
           options={() => ({})}
         />
       </RootStack.Navigator>
