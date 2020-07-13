@@ -90,6 +90,13 @@ export class PricesSalesCard extends PureComponent {
             156.90
           </NrmText.T2D>
         </View>
+
+        <View
+          style={{
+            borderBottomColor: Colors.VIOLAET,
+            borderBottomWidth: 2,
+          }}
+        />
       </NrmCard>
     );
   }

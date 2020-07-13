@@ -66,6 +66,12 @@ export class SameProduct extends PureComponent {
             156.90
           </NrmText.T2D>
         </View>
+        <View
+          style={{
+            borderBottomColor: Colors.VIOLAET,
+            borderBottomWidth: 2,
+          }}
+        />
       </NrmCard>
     );
   }
@@ -100,5 +106,6 @@ const styles = StyleSheet.create({
 
   colorCardContainer: {
     flex: 2,
+    marginVertical: 12,
   },
 });
