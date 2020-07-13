@@ -5,7 +5,16 @@ import {Colors, Fonts} from '../../Theme';
 import styles from './styles';
 
 const customTextWithStyle = (defaultStyle, textType) => {
-  return ({children, style, bold, centered, type, numberOfLines, onPress}) => {
+  return ({
+    children,
+    style,
+    bold,
+    centered,
+    type,
+    numberOfLines,
+    onPress,
+    ...props
+  }) => {
     let fontFamily = type ? type : bold;
     // ? Fonts.family.bold
     // : Fonts.family.regular;
@@ -33,7 +42,11 @@ const customTextWithStyle = (defaultStyle, textType) => {
     };
 
     return (
-      <Text numberOfLines={numberOfLines} style={_style} onPress={onPress}>
+      <Text
+        numberOfLines={numberOfLines}
+        style={_style}
+        onPress={onPress}
+        {...props}>
         {children}
       </Text>
     );

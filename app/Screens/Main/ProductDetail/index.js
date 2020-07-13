@@ -10,6 +10,9 @@ import {
 import {NrmContainer, NrmIcon, NrmCard, NrmText} from '../../../Components';
 import FastImage from 'react-native-fast-image';
 import {Images, Colors} from '../../../Theme';
+import ColorCard from './ColorCard';
+import PriceCard from './PriceCard';
+import ProductDetailCard from './ProductDetailCard';
 export class ProductDetail extends Component {
   render() {
     return (
@@ -58,58 +61,36 @@ export class ProductDetail extends Component {
             </View>
           </NrmCard>
 
+          <ColorCard />
+
+          <PriceCard />
+
+          <ProductDetailCard />
+
           <NrmCard style={styles.colorCardContainer}>
             <View
               style={{
                 justifyContent: 'flex-start',
                 alignItems: 'flex-start',
               }}>
-              <NrmText.T2D style={{}}>Renk</NrmText.T2D>
+              <NrmText.T2D style={{}}>Ürün Puanı Bilgileri</NrmText.T2D>
             </View>
+
             <View
               style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
+                justifyContent: 'flex-start',
+                alignItems: 'flex-start',
               }}>
-              <View
+              <NrmText.T2D
+                adjustsFontSizeToFit={true}
                 style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-evenly',
-                  alignItems: 'center',
+                  fontSize: 12,
+                  textAlignVertical: 'center',
                 }}>
-                <TouchableOpacity
-                  style={[styles.buttonMl, {marginHorizontal: 24}]}>
-                  <NrmText.T2D style={styles.textCard}>
-                    Pembenin Gücü
-                  </NrmText.T2D>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[styles.buttonMl, {marginHorizontal: 24}]}>
-                  <NrmText.T2D style={styles.textCard}>
-                    Sarı sarı kimin yarı
-                  </NrmText.T2D>
-                </TouchableOpacity>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <NrmText.T2D style={{fontSize: 16, fontWeight: 'bold'}}>
-                  +4
-                </NrmText.T2D>
-                <TouchableOpacity>
-                  <NrmIcon
-                    name="angle-right"
-                    size={32}
-                    type="Fontisto"
-                    color={Colors.GREY_COLOR_LIGHT}
-                    style={styles.icon}
-                  />
-                </TouchableOpacity>
-              </View>
+                Urun beklediğimden çok daha hızlı geldi Urun beklediğimden çok
+                daha hızlı geldi Urun beklediğimden çok daha hızlı geldi Urun
+                beklediğimden çok daha hızlı geldi
+              </NrmText.T2D>
             </View>
           </NrmCard>
         </ScrollView>
