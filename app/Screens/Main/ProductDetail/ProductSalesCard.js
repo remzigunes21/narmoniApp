@@ -6,7 +6,7 @@ import {NrmCard, NrmText, NrmIcon, MenuButton} from '../../../Components';
 import {Colors, Fonts} from '../../../Theme';
 import ProductDetailRate from './ProductDetailRate';
 
-export class ProductDetailCard extends PureComponent {
+export class ProductSalesCard extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,18 +22,20 @@ export class ProductDetailCard extends PureComponent {
             alignItems: 'flex-start',
           }}>
           <NrmText.T2D style={{}}>
-            Ürün Puanı {'& '}Yorumları {'  (27)'}
+            Satıcı Puanı {'& '}Yorumları {'  (27)'}
           </NrmText.T2D>
         </View>
-        <ProductDetailRate />
+
         <View style={{flexDirection: 'row'}}>
           <View
             style={{
               justifyContent: 'center',
               alignItems: 'center',
 
-              width: 70,
-              height: 70,
+              width: 55,
+              height: 55,
+              marginRight: 15,
+              marginVertical: 15,
             }}>
             <NrmText.T1D style={{fontSize: 14}}>trendyol</NrmText.T1D>
           </View>
@@ -60,62 +62,30 @@ export class ProductDetailCard extends PureComponent {
             </NrmText.T2D>
           </View>
         </View>
-        <View style={{flexDirection: 'row'}}>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-
-              width: 70,
-              height: 70,
-            }}>
-            <NrmText.T1D style={{fontSize: 14}}>joker</NrmText.T1D>
-          </View>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginRight: 15,
-              paddingRight: 15,
-            }}>
-            <NrmText.T2D
-              adjustsFontSizeToFit={true}
-              style={{
-                fontSize: 12,
-                textAlignVertical: 'center',
-                marginRight: 15,
-                paddingRight: 15,
-              }}>
-              Urun beklediğimden çok daha hızlı geldi Urun beklediğimden çok
-              daha hızlı geldi Urun beklediğimden çok daha hızlı geldi Urun
-              beklediğimden çok daha hızlı geldi
-            </NrmText.T2D>
-          </View>
-        </View>
 
         <TouchableOpacity
           style={{
             flexDirection: 'row',
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             alignItems: 'center',
           }}>
-          <NrmText.T2G style={{fontSize: 16, fontWeight: 'bold'}}>
-            Tümünü Gör
-          </NrmText.T2G>
           <NrmIcon
-            name="angle-right"
+            name="star"
             size={32}
-            type="Fontisto"
-            color={Colors.GREY_COLOR_LIGHT}
+            type="AntDesign"
+            color={Colors.ORANGE_LIGHT}
             style={styles.icon}
           />
+          <NrmText.T2G style={{fontSize: 12, fontWeight: 'bold'}}>
+            /sanal market
+          </NrmText.T2G>
         </TouchableOpacity>
       </NrmCard>
     );
   }
 }
 
-export default ProductDetailCard;
+export default ProductSalesCard;
 
 const styles = StyleSheet.create({
   container: {},

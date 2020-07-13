@@ -13,6 +13,9 @@ import {Images, Colors} from '../../../Theme';
 import ColorCard from './ColorCard';
 import PriceCard from './PriceCard';
 import ProductDetailCard from './ProductDetailCard';
+import ProductSalesCard from './ProductSalesCard';
+import PricesSalesCard from './PricesSalesCard';
+import SameProduct from './SameProduct';
 export class ProductDetail extends Component {
   render() {
     return (
@@ -73,7 +76,7 @@ export class ProductDetail extends Component {
                 justifyContent: 'flex-start',
                 alignItems: 'flex-start',
               }}>
-              <NrmText.T2D style={{}}>Ürün Puanı Bilgileri</NrmText.T2D>
+              <NrmText.T2D style={{}}>Ürün Bilgileri</NrmText.T2D>
             </View>
 
             <View
@@ -93,6 +96,11 @@ export class ProductDetail extends Component {
               </NrmText.T2D>
             </View>
           </NrmCard>
+
+          <ProductSalesCard />
+
+          <PricesSalesCard />
+          <SameProduct />
         </ScrollView>
       </NrmContainer>
     );
