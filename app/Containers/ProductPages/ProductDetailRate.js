@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import {NrmIcon, NrmText} from '../../../Components';
-import {Colors} from '../../../Theme';
+import {NrmCard, NrmText, NrmIcon} from '../../Components';
+import {Colors} from '../../Theme';
 
 export class ProductDetailRate extends PureComponent {
   render() {

@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import {NrmCard, NrmText, NrmIcon} from '../../../Components';
-import {Colors} from '../../../Theme';
+import {NrmCard, NrmText, NrmIcon} from '../../Components';
+import {Colors} from '../../Theme';
 
 export class PriceCard extends PureComponent {
   render() {
@@ -18,14 +18,41 @@ export class PriceCard extends PureComponent {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <NrmText.T2D
+            <View
               style={{
-                fontSize: 26,
-                fontWeight: 'bold',
-                color: '#000',
+                justifyContent: 'center',
+                alignItems: 'flex-end',
+                marginBottom: 25,
               }}>
-              156.90
-            </NrmText.T2D>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: Colors.ORANGE_LIGHT,
+                  borderRadius: 15,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: 35,
+                  height: 20,
+                }}>
+                <NrmText.T2D
+                  style={{
+                    textAlign: 'center',
+                    alignSelf: 'center',
+                    fontSize: 12,
+                    fontWeight: 'bold',
+                    color: Colors.WHITE,
+                  }}>
+                  77%
+                </NrmText.T2D>
+              </TouchableOpacity>
+              <NrmText.T2D
+                style={{
+                  fontSize: 26,
+                  fontWeight: 'bold',
+                  color: '#000',
+                }}>
+                156.90
+              </NrmText.T2D>
+            </View>
 
             <NrmText.T2D style={{marginHorizontal: 24, fontSize: 12}}>
               trendyol

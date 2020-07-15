@@ -2,8 +2,9 @@ import React, {PureComponent} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import Rate from 'react-native-rate';
 
-import {NrmCard, NrmText, NrmIcon, MenuButton} from '../../../Components';
-import {Colors, Fonts} from '../../../Theme';
+import {NrmCard, NrmText, NrmIcon} from '../../Components';
+import {Colors} from '../../Theme';
+
 import ProductDetailRate from './ProductDetailRate';
 
 export class ProductDetailCard extends PureComponent {

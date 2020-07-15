@@ -10,12 +10,12 @@ import {
 import {NrmContainer, NrmIcon, NrmCard, NrmText} from '../../../Components';
 import FastImage from 'react-native-fast-image';
 import {Images, Colors} from '../../../Theme';
-import ColorCard from './ColorCard';
-import PriceCard from './PriceCard';
-import ProductDetailCard from './ProductDetailCard';
-import ProductSalesCard from './ProductSalesCard';
-import PricesSalesCard from './PricesSalesCard';
-import SameProduct from './SameProduct';
+import ColorCard from '../../../Containers/ProductPages/ColorCard';
+import ProductDetailCard from '../../../Containers/ProductPages/ProductDetailCard';
+import SameProduct from '../../../Containers/ProductPages/SameProduct';
+import PricesSalesCard from '../../../Containers/ProductPages/PricesSalesCard';
+import PriceCard from '../../../Containers/ProductPages/PriceCard';
+
 export class ProductDetail extends Component {
   render() {
     return (
@@ -28,11 +28,44 @@ export class ProductDetail extends Component {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
+              <View style={{marginLeft: 20}}>
+                <Image
+                  source={Images.mdPersil}
+                  style={{width: 50, height: 50}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12}}
+                />
+                <Image
+                  source={Images.mdPersil}
+                  style={{width: 50, height: 50}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12}}
+                />
+                <Image
+                  source={Images.mdPersil}
+                  style={{width: 50, height: 50}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12}}
+                />
+                <Image
+                  source={Images.mdPersil}
+                  style={{width: 50, height: 50}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12}}
+                />
+                <Image
+                  source={Images.mdPersil}
+                  style={{width: 50, height: 50}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12}}
+                />
+              </View>
               <Image
-                source={Images.bear}
+                source={Images.persil}
                 style={{width: 300, height: 300}}
                 resizeMode="contain"
               />
+
               <TouchableOpacity>
                 <NrmIcon
                   name="angle-right"

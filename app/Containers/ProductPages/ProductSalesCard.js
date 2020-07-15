@@ -1,9 +1,19 @@
 import React, {PureComponent} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import {NrmCard, NrmText, NrmIcon} from '../../../Components';
-import {Colors} from '../../../Theme';
+import Rate from 'react-native-rate';
 
-export class SameProduct extends PureComponent {
+import {NrmCard, NrmText, NrmIcon} from '../../Components';
+import {Colors} from '../../Theme';
+
+import ProductDetailRate from './ProductDetailRate';
+
+export class ProductSalesCard extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rated: false,
+    };
+  }
   render() {
     return (
       <NrmCard style={styles.colorCardContainer}>
@@ -12,7 +22,9 @@ export class SameProduct extends PureComponent {
             justifyContent: 'flex-start',
             alignItems: 'flex-start',
           }}>
-          <NrmText.T2D style={{}}>Benzer Ürünler</NrmText.T2D>
+          <NrmText.T2D style={{}}>
+            Satıcı Puanı {'& '}Yorumları {'  (27)'}
+          </NrmText.T2D>
         </View>
 
         <View style={{flexDirection: 'row'}}>
@@ -24,6 +36,7 @@ export class SameProduct extends PureComponent {
               width: 55,
               height: 55,
               marginRight: 15,
+              marginVertical: 15,
             }}>
             <NrmText.T1D style={{fontSize: 14}}>trendyol</NrmText.T1D>
           </View>
@@ -40,44 +53,40 @@ export class SameProduct extends PureComponent {
               style={{
                 fontSize: 12,
                 textAlignVertical: 'center',
+
                 marginRight: 15,
                 paddingRight: 15,
               }}>
-              Persil Power Jel etkileyici förmülüyle karşınızda 1750ml gülün
-              büyüsü
+              Urun beklediğimden çok daha hızlı geldi Urun beklediğimden çok
+              daha hızlı geldi Urun beklediğimden çok daha hızlı geldi Urun
+              beklediğimden çok daha hızlı geldi
             </NrmText.T2D>
           </View>
         </View>
-        <View
+
+        <TouchableOpacity
           style={{
             flexDirection: 'row',
+            justifyContent: 'flex-start',
             alignItems: 'center',
-            justifyContent: 'space-around',
           }}>
-          <NrmText.T2D style={{}}>trendyol</NrmText.T2D>
-          <NrmText.T2D style={{}}>özdilek</NrmText.T2D>
-          <NrmText.T2D style={{}}>migros</NrmText.T2D>
-          <NrmText.T2D
-            style={{
-              fontSize: 26,
-              fontWeight: 'bold',
-              color: '#000',
-            }}>
-            156.90
-          </NrmText.T2D>
-        </View>
-        <View
-          style={{
-            borderBottomColor: Colors.VIOLAET,
-            borderBottomWidth: 2,
-          }}
-        />
+          <NrmIcon
+            name="star"
+            size={32}
+            type="AntDesign"
+            color={Colors.ORANGE_LIGHT}
+            style={styles.icon}
+          />
+          <NrmText.T2G style={{fontSize: 12, fontWeight: 'bold'}}>
+            /sanal market
+          </NrmText.T2G>
+        </TouchableOpacity>
       </NrmCard>
     );
   }
 }
 
-export default SameProduct;
+export default ProductSalesCard;
 
 const styles = StyleSheet.create({
   container: {},

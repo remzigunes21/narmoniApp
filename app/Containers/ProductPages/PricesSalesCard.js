@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import {NrmCard, NrmText, NrmIcon} from '../../../Components';
-import {Colors} from '../../../Theme';
+import {NrmCard, NrmText, NrmIcon} from '../../Components';
+import {Colors} from '../../Theme';
 
 export class PricesSalesCard extends PureComponent {
   render() {
@@ -76,8 +76,18 @@ export class PricesSalesCard extends PureComponent {
               color={Colors.ORANGE_LIGHT}
               style={styles.icon}
             />
+            <NrmText.T2G
+              style={{
+                textAlign: 'center',
+                fontSize: 10,
+                fontWeight: 'bold',
+                color: Colors.WHITE,
+                marginLeft: -25,
+              }}>
+              9.9
+            </NrmText.T2G>
             <NrmText.T2G style={{fontSize: 12, fontWeight: 'bold'}}>
-              /sanal market
+              {'  /'}sanal market
             </NrmText.T2G>
           </TouchableOpacity>
 

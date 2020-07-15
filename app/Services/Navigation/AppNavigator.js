@@ -64,7 +64,11 @@ const HomeStackNavigator = () => {
           backgroundColor: Colors.WHITE,
         },
       })}>
-      <HomeStack.Screen name="Home" component={Home} options={() => ({})} />
+      <HomeStack.Screen
+        name="Home"
+        component={Home}
+        options={() => ({headerShown: false})}
+      />
 
       <HomeStack.Screen
         name="ProductDetail"

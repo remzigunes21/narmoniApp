@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
-import {NrmCard, NrmText, NrmIcon} from '../../../Components';
-import {Colors} from '../../../Theme';
+import {NrmCard, NrmText, NrmIcon} from '../../Components';
+import {Colors} from '../../Theme';
 
 export class ColorCard extends PureComponent {
   render() {
