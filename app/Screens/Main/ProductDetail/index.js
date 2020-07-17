@@ -15,9 +15,28 @@ import ProductDetailCard from '../../../Containers/ProductPages/ProductDetailCar
 import SameProduct from '../../../Containers/ProductPages/SameProduct';
 import PricesSalesCard from '../../../Containers/ProductPages/PricesSalesCard';
 import PriceCard from '../../../Containers/ProductPages/PriceCard';
+import ProductSalesCard from '../../../Containers/ProductPages/ProductSalesCard';
 
 export class ProductDetail extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isFocus: true,
+      active: null,
+    };
+  }
+
+  onPress = active => {
+    this.setState({active});
+    console.log('ProductDetail -> active', this.state.active);
+  };
+
   render() {
+    const {active} = this.state;
+    const selected = {borderWidth: 2, borderColor: 'red'};
+    const unSelected = {border: 'none'};
+
     return (
       <NrmContainer style={styles.container}>
         <ScrollView style={{flex: 4}}>
@@ -81,16 +100,36 @@ export class ProductDetail extends Component {
                 Presil Power Jel 3750ml Çamaşır Deterjanı Gülün Büyüsü
               </NrmText.T1G>
               <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.buttonMl}>
+                <TouchableOpacity
+                  onPress={() => this.onPress('1')}
+                  style={[
+                    styles.buttonMl,
+                    active === '1' ? selected : unSelected,
+                  ]}>
                   <NrmText.T2D style={styles.textCard}>1750ml</NrmText.T2D>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonMl}>
+                <TouchableOpacity
+                  style={[
+                    styles.buttonMl,
+                    active === '2' ? selected : unSelected,
+                  ]}
+                  onPress={() => this.onPress('2')}>
                   <NrmText.T2D style={styles.textCard}>1750ml</NrmText.T2D>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonMl}>
+                <TouchableOpacity
+                  onPress={() => this.onPress('3')}
+                  style={[
+                    styles.buttonMl,
+                    active === '3' ? selected : unSelected,
+                  ]}>
                   <NrmText.T2D style={styles.textCard}>1750ml</NrmText.T2D>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonMl}>
+                <TouchableOpacity
+                  onPress={() => this.onPress('4')}
+                  style={[
+                    styles.buttonMl,
+                    active === '4' ? selected : unSelected,
+                  ]}>
                   <NrmText.T2D style={styles.textCard}>1750ml</NrmText.T2D>
                 </TouchableOpacity>
               </View>

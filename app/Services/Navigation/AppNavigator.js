@@ -36,6 +36,7 @@ import BottomTabBar from '../../Components/BottomTabBar';
 import {CustomHeader} from '../../Components/CustomHeader';
 import {Screen, Colors} from '../../Theme';
 import {NrmHeader} from '../../Components';
+import VendorPage from '../../Containers/ProductPreview/VendorPage';
 
 const HomeStack = createStackNavigator();
 
@@ -96,6 +97,11 @@ const HomeStackNavigator = () => {
         options={() => ({})}
       />
       <HomeStack.Screen
+        name="Vendor"
+        component={VendorPage}
+        options={() => ({headerShown: false})}
+      />
+      <HomeStack.Screen
         name="ChangeSkuAmountModal"
         component={ChangeSkuAmountModal}
         options={() => ({})}
@@ -146,10 +152,10 @@ const ListStackNavigator = () => {
               }}>
               <NrmHeader
                 onBack={() => navigation.navigate('Home')}
-                iconName="angle-left"
+                iconName="notifications-circle-outline"
                 iconSize={24}
                 iconColor={Colors.WHITE}
-                iconType="Fontisto"
+                iconType="Ionicons"
               />
               <NrmHeader
                 onBack={() => navigation.navigate('Home')}

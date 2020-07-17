@@ -2,9 +2,7 @@ import {showMessage} from 'react-native-flash-message';
 import _ from 'lodash';
 import moment from 'moment';
 
-import Firebase from '../Services/Firebase';
 import {Colors, Images} from '../Theme';
-import mainStore from '@Providers/MobX/mainStore';
 
 const popup = {
   error: (title, description, onPress, duration) => {

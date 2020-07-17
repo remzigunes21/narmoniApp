@@ -4,4 +4,6 @@ export default {
   loadingIn: require('../Assets/Images/loadingIn.png'),
   persil: require('../Assets/Images/persil.png'),
   mdPersil: require('../Assets/Images/mdpersil.png'),
+  logo: require('../Assets/Images/logo.png'),
+  location: require('../Assets/Images/location.png'),
 };

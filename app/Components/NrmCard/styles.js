@@ -6,13 +6,14 @@ export default StyleSheet.create({
     backgroundColor: Colors.WHITE,
     padding: 10,
     borderRadius: 4,
-    shadowColor: Colors.GREY,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    //   shadowColor: Colors.GREY,
+    //   shadowOffset: {
+    //     width: 0,
+    //     height: 2,
+    //   },
+    //   shadowOpacity: 0.25,
+    //   shadowRadius: 3.84,
+    //   elevation: 5,
+    //
   },
 });

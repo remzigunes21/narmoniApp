@@ -59,11 +59,13 @@ class HomePage extends Component {
             },
           ]}>
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <TouchableOpacity style={styles.location} onPress={null}>
-              <View style={{marginBottom: 40}}>
+            <TouchableOpacity
+              style={styles.location}
+              onPress={() => this.props.navigation.navigate('Vendor')}>
+              <View style={{marginBottom: 40, marginRight: 50}}>
                 <NrmText.T4W>Hoşgeldin</NrmText.T4W>
                 <NrmText.T3W style={{fontWeight: 'bold'}}>
-                  {'Remzi'}
+                  {'dkskldsdsldsşdddşşsşdş'}
                 </NrmText.T3W>
               </View>
             </TouchableOpacity>
@@ -78,7 +80,7 @@ class HomePage extends Component {
                 <View style={{}}>
                   <NrmText.T4W>Adresim</NrmText.T4W>
                   <NrmText.T3W style={{fontWeight: 'bold'}}>
-                    {'locationInfo'}
+                    {'Koca Mustafa Paşa'}
                   </NrmText.T3W>
                 </View>
               </TouchableOpacity>

@@ -16,7 +16,7 @@ import BottomTabBar from './BottomTabBar';
 import NrmButton from './NrmButton';
 import NrmText from './NrmText';
 import NrmInput from './NrmInput';
-
+import NrmMdButton from './NrmMdButton';
 import NrmHeader from './NrmHeader';
 
 export {
@@ -36,4 +36,5 @@ export {
   NrmText,
   NrmInput,
   NrmHeader,
+  NrmMdButton,
 };

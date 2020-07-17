@@ -57,7 +57,7 @@ class Home extends Component {
   };
 
   render() {
-    return <HomePage />;
+    return <HomePage navigation={this.props.navigation} />;
   }
 }
 
