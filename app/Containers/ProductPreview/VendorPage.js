@@ -9,10 +9,11 @@ import {
   Image,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {NrmText, NrmIcon, NrmMdButton} from '../../Components';
+import {NrmText, NrmIcon, NrmMdButton, NrmCard} from '../../Components';
 import {Colors, Images} from '../../Theme';
 import SearchBox from '../../Screens/Main/Search/SearchBox';
 import SearchResult from '../SearchPages/SearchResult';
+import SearchFilterIcon from '../SearchPages/SearchFilterIcon';
 
 export class VendorPage extends PureComponent {
   constructor(props) {
@@ -156,7 +157,37 @@ export class VendorPage extends PureComponent {
 
           <NrmMdButton />
 
-          <SearchResult />
+          <SearchFilterIcon />
+
+          <ScrollView style={{flex: 1}}>
+            <NrmCard style={{flexDirection: 'row'}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <SearchResult />
+                <View
+                  style={{
+                    height: '100%',
+                    width: 2,
+                    backgroundColor: '#BCC3C3',
+                  }}
+                />
+                <SearchResult />
+              </View>
+            </NrmCard>
+            <View
+              style={{
+                backgroundColor: '#BCC3C3',
+                width: '100%',
+                height: 2,
+                marginLeft: 10,
+              }}
+            />
+          </ScrollView>
         </View>
       </>
     );

@@ -6,23 +6,35 @@ import {
   TouchableOpacity,
   StatusBar,
   ScrollView,
+  Keyboard,
+  TextInput,
+  ActivityIndicator,
 } from 'react-native';
-import {NrmContainer, NrmIcon, NrmText, NrmCard} from '../../../Components';
+import {
+  NrmContainer,
+  NrmIcon,
+  NrmText,
+  NrmCard,
+  NrmMdButton,
+} from '../../../Components';
 import SearchBox from './SearchBox';
-import {Colors} from '../../../Theme';
+import {connect} from 'react-redux';
+import {Colors, Fonts} from '../../../Theme';
 import SearchResult from '../../../Containers/SearchPages/SearchResult';
 import {Divider} from 'react-native-elements';
+import SearchFilterIcon from '../../../Containers/SearchPages/SearchFilterIcon';
+import BaseScreen from '../../BaseScreen';
+import {isTablet, SCREEN_MARGIN} from '../../../config/constant';
+import {FlatList} from 'react-native-gesture-handler';
 
-class Search extends PureComponent {
+class Search extends BaseScreen {
   constructor(props) {
     super(props);
 
     this.state = {
       searchText: '',
-      isSearchBarFocus: false,
+      isFocus: false,
     };
-    this.ref = createRef();
-    StatusBar.setBarStyle('dark-content', true);
   }
 
   updateSearchText = async val => {
@@ -31,7 +43,9 @@ class Search extends PureComponent {
   render() {
     const {searchText, isSearchBarFocus} = this.state;
     return (
-      <NrmContainer style={{height: '100%', backgroundColor: '#fff'}}>
+      <NrmContainer
+        barStyle="dark-content"
+        style={{height: '100%', backgroundColor: '#fff'}}>
         <View
           style={{
             flexDirection: 'row',
@@ -46,108 +60,180 @@ class Search extends PureComponent {
               style={styles.icon}
             />
           </TouchableOpacity>
-          <SearchBox
-            searchText={searchText}
-            setSearchText={this.updateSearchText}
-            onFocus={() => this.setState({isSearchBarFocus: true})}
-            autoFocus={true}
-          />
+          {this._renderTextInput()}
         </View>
+        <NrmMdButton
+          navigation={this.props.navigation}
+          onPress={() => this.props.navigation.navigate('SearchCategory')}
+        />
 
-        <View>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.buttonMl}>
-              <NrmText.T2D style={styles.textCard}>Tümü</NrmText.T2D>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonMl}>
-              <NrmText.T2D style={styles.textCard}>El Deterjanı</NrmText.T2D>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonMl}>
-              <NrmText.T2D style={styles.textCard}>Toz</NrmText.T2D>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonMl}>
-              <NrmText.T2D style={styles.textCard}>Ariel</NrmText.T2D>
-            </TouchableOpacity>
-          </View>
-        </View>
+        <SearchFilterIcon />
 
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginVertical: 10,
-            backgroundColor: Colors.WHITE_LIGHT,
-            paddingVertical: 6,
-          }}>
-          <TouchableOpacity
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <NrmIcon
-              name="filter"
-              size={32}
-              type="MaterialCommunityIcons"
-              color={Colors.ORANGE_LIGHT}
-              style={styles.icon}
-            />
-            <NrmText.T1D>Filtre</NrmText.T1D>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <NrmIcon
-              name="sort-amount-down-alt"
-              size={32}
-              type="FontAwesome5"
-              color={Colors.ORANGE_LIGHT}
-              style={styles.icon}
-            />
-            <NrmText.T1D style={{marginLeft: 12}}>Sırala</NrmText.T1D>
-          </TouchableOpacity>
-        </View>
-        <ScrollView style={{flex: 1}}>
-          <NrmCard style={{flexDirection: 'row'}}>
-            <View
-              style={{
-                flexDirection: 'row',
-
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <SearchResult />
-              <View
-                style={{
-                  height: '100%',
-                  width: 2,
-                  backgroundColor: '#BCC3C3',
-                }}
-              />
-              <SearchResult />
-            </View>
-          </NrmCard>
-          <View
-            style={{
-              backgroundColor: '#BCC3C3',
-              width: '100%',
-              height: 2,
-              marginLeft: 10,
-            }}
-          />
-        </ScrollView>
-        <View style={{borderBottomColor: 'black', borderBottomWidth: 1}} />
+        {!this.state.isFocus
+          ? this.renderSearchDashboard()
+          : this.state.searchText
+          ? this.renderSearchResult()
+          : null}
       </NrmContainer>
     );
   }
+
+  renderCategory = () => {
+    return <NrmText.T1G style={{color: Colors.BLACK}}>category</NrmText.T1G>;
+  };
+
+  _renderTextInput = () => (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.buttonContainer}>
+        <NrmIcon
+          name="search1"
+          size={24}
+          color={Colors.ORANGE_LIGHT}
+          type="AntDesign"
+        />
+      </TouchableOpacity>
+      <TextInput
+        style={styles.input}
+        autoCapitalize="none"
+        onChangeText={this._onChangeText}
+        autoCapitalize="none"
+        placeholder="Deterjan  (1623 sonuç)"
+        value={this.state.searchText}
+        placeholderTextColor={Colors.GREY + '99'}
+        onFocus={() => this.setState({isFocus: true})}
+      />
+      {this.state.searchText ? (
+        <TouchableOpacity
+          style={styles.clearIcon}
+          onPress={this._onClearBtnClicked}>
+          <NrmIcon
+            name="barcode"
+            color={Colors.BLACK}
+            size={!isTablet ? 15 : 24}
+            style={{marginRight: 12}}
+            type="MaterialCommunityIcons"
+          />
+
+          <NrmIcon
+            name="circle-with-cross"
+            color={Colors.BLACK}
+            size={!isTablet ? 15 : 21}
+            style={{marginRight: 12}}
+            type="Entypo"
+          />
+        </TouchableOpacity>
+      ) : null}
+    </View>
+  );
+
+  renderSearchDashboard = () => {
+    const {searchHistory, searchBlocks} = this.props;
+
+    return (
+      <>
+        <ScrollView
+          contentContainerStyle={{marginTop: 20}}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}>
+          {this.renderCategory()}
+        </ScrollView>
+      </>
+    );
+  };
+
+  renderSearchResult = () => {
+    const {searchResult, searchInProgress} = this.props;
+
+    return (
+      <>
+        {searchInProgress ? (
+          <ActivityIndicator color={Colors.FACEBOOK} size="large" />
+        ) : (
+          <ScrollView style={{flex: 1}}>
+            <NrmCard style={{flexDirection: 'row'}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <SearchResult />
+                <View
+                  style={{
+                    height: '100%',
+                    width: 2,
+                    backgroundColor: '#BCC3C3',
+                  }}
+                />
+                <SearchResult />
+              </View>
+            </NrmCard>
+            <View
+              style={{
+                backgroundColor: '#BCC3C3',
+                width: '100%',
+                height: 2,
+                marginLeft: 10,
+              }}
+            />
+          </ScrollView>
+        )}
+        <View style={{borderBottomColor: 'black', borderBottomWidth: 1}} />
+      </>
+    );
+  };
+
+  _onClearBtnClicked = () => {
+    this.setState({searchText: ''});
+    this.dispatchAction(this.$().CLEAR_SEARCH);
+  };
+
+  _onChangeText = searchText => {
+    this.setState({searchText});
+
+    //  this.dispatchAction(this.$().SEARCH_REQUEST, searchText);
+  };
 }
 
-export default Search;
+function mapStateToProps(state) {
+  return {
+    searchResult: state.search.searchResult,
+    searchInProgress: state.search.searchInProgress,
+    searchFailed: state.search.searchFailed,
+    searchCompleted: state.search.searchCompleted,
+
+    searchHistory: state.search.searchHistory,
+    searchBlocks: state.search.searchBlocks,
+  };
+}
+
+export default connect(mapStateToProps)(Search);
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    position: 'relative',
+    marginHorizontal: 10,
+
+    backgroundColor: Colors.GREY_LIGHTER,
+    height: 40,
+    alignItems: 'center',
+    borderRadius: 16,
+    width: 340,
+  },
+  input: {
+    fontSize: 17,
+    fontFamily: Fonts.family.semiBold,
+    fontWeight: Platform.OS === 'android' ? 'normal' : undefined,
+    flex: 1,
+    height: '100%',
+    color: Colors.GREY,
+  },
+  searchButtonContainer: {
+    paddingHorizontal: 8,
+    justifyContent: 'center',
+  },
   buttonMl: {
     backgroundColor: Colors.VIOLAET,
     borderRadius: 18,
@@ -163,4 +249,16 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   textCard: {textAlign: 'center', alignSelf: 'center', fontSize: 12},
+  clearIcon: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+
+  title: {
+    fontFamily: Fonts.family.semiBold,
+    fontSize: 18,
+    lineHeight: 22,
+    marginVertical: 10,
+  },
 });

@@ -13,6 +13,7 @@ import {
 import SegmentedControlTab from 'react-native-segmented-control-tab';
 import * as Keychain from 'react-native-keychain';
 import AsyncStorage from '@react-native-community/async-storage';
+import BaseScreen from '../BaseScreen';
 
 const ACCESS_CONTROL_OPTIONS = ['None', 'Passcode', 'Password'];
 const ACCESS_CONTROL_OPTIONS_ANDROID = ['None'];
@@ -43,7 +44,7 @@ const SECURITY_STORAGE_MAP = [
 
 const cookie = AsyncStorage.getItem('cookie');
 
-class KeychainScreen extends Component {
+class KeychainScreen extends BaseScreen {
   state = {
     username: '',
     password: '',

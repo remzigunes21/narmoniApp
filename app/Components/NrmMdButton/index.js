@@ -3,7 +3,7 @@ import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Colors} from '../../Theme';
 import {NrmText} from '..';
 
-const NrmMdButton = () => {
+const NrmMdButton = props => {
   const [active, setActive] = useState(null);
 
   const selected = {borderWidth: 2, borderColor: 'red'};
@@ -11,6 +11,8 @@ const NrmMdButton = () => {
 
   const onPress = active => {
     setActive(active);
+
+    props.navigation.navigate('SearchCategory');
   };
   return (
     <View style={styles.buttonContainer}>

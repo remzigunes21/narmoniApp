@@ -16,8 +16,9 @@ import SameProduct from '../../../Containers/ProductPages/SameProduct';
 import PricesSalesCard from '../../../Containers/ProductPages/PricesSalesCard';
 import PriceCard from '../../../Containers/ProductPages/PriceCard';
 import ProductSalesCard from '../../../Containers/ProductPages/ProductSalesCard';
+import BaseScreen from '../../BaseScreen';
 
-export class ProductDetail extends Component {
+export class ProductDetail extends BaseScreen {
   constructor(props) {
     super(props);
 

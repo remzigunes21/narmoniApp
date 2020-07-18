@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Animated, Platform, Linking} from 'react-native';
 import HomePage from '../../../Containers/HomePage';
+import BaseScreen from '../../BaseScreen';
 
-class Home extends Component {
+class Home extends BaseScreen {
   constructor(props) {
     super(props);
     this.state = {updateNeeded: false};

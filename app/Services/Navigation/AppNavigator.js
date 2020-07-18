@@ -38,6 +38,7 @@ import {Screen, Colors} from '../../Theme';
 import {NrmHeader} from '../../Components';
 import VendorPage from '../../Containers/ProductPreview/VendorPage';
 import ProductPageColor from '../../Containers/ProductPages/ProductPageColor';
+import SearchCategory from '../../Screens/Main/Search/SearchCategory';
 
 const HomeStack = createStackNavigator();
 
@@ -256,6 +257,11 @@ const SearchStackNavigator = () => {
         component={ProductImageModal}
         options={() => ({headerShown: false})}
       />
+      <SearchStack.Screen
+        name="SearchCategory"
+        component={SearchCategory}
+        options={() => ({headerShown: false})}
+      />
     </SearchStack.Navigator>
   );
 };
@@ -397,3 +403,40 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+// const SCREEN_NAMES = {
+//   //Stacks name
+//   Main: 'Main',
+
+//   Auth: 'Auth',
+//   //Screens name
+
+//   Home: 'Home',
+//   Profile: 'Profile',
+//   MyList: 'MyList',
+//   Search: 'Search',
+//   EditPurchaseModal: 'EditPurchaseModal',
+//   WhyNarmoniModal: 'WhyNarmoniModal',
+//   ChangePasswordModal: 'ChangePasswordModal',
+//   AreYouSureModal: 'AreYouSureModal',
+//   LocationSettings: 'LocationSettings',
+//   Webview: 'Webview',
+//   ProfileSettings: 'ProfileSettings',
+//   Settings: 'Settings',
+//   PurchasedProductsPage: 'PurchasedProductsPage',
+//   Login: 'Login',
+//   ProductImageModal: 'ProductImageModal',
+//   ForgotPassword: 'ForgotPassword',
+//   ProductDetailFromLocal: 'ProductDetailFromLocal',
+//   ProductDetail: 'ProductDetail',
+//   SortModal: 'SortModal',
+//   ReplacedSkuModal: 'ReplacedSkuModal',
+//   ListActionsModal: 'ListActionsModal',
+//   SelectListModal: 'SelectListModal',
+//   Vendor: 'Vendor',
+//   SearchBarcode: 'SearchBarcode',
+//   ChangeSkuAmountModal: 'ChangeSkuAmountModal',
+//   SearchCategory: 'SearchCategory',
+//   SearchMarketFilterModal: 'SearchMarketFilterModal',
+// };
+// export {SCREEN_NAMES};

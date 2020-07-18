@@ -6,43 +6,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {Colors} from '../../Theme';
 function BottomTabBar({state, descriptors, navigation}) {
-  const handleHomeButton = () => {
-    /*  if (navIndex === navIndexStore && navIndexStore === 0) {
-      uiStore.setUpdatePage()
-    } else {
-      uiStore.setNavIndexStore(0)
-    } */
-    navigation.navigate('Home');
-  };
-  const handleSettingsButton = () => {
-    navigation.navigate('PurchasedProductsPage');
-  };
-
-  const handleSearchButton = () => {
-    /*  if (navIndex === navIndexStore && navIndexStore === 1) {
-      uiStore.setUpdatePage()
-    } else {
-      uiStore.setNavIndexStore(1)
-    } */
-    /* Search butonuna basıldıgında kategoriler gözükmesini set eder */
-    // searchStore.setSearchViewType(SEARCH_VIEW_TYPES.CATEGORY)
-    // searchStore.setSearchFirstOpen(true)
-    navigation.navigate('Search');
-  };
-
-  const handleListButton = async () => {
-    // const vendor = await AsyncStorage.getItem('vendor')
-    // buyForMeStore.showCart(vendor, cookie, email, password)
-
-    // buyForMeStore.minimumOrder(vendor, cookie, email, password)
-
-    // buyForMeStore.showTimeSlots(vendor, cookie, email, password)
-
-    // buyForMeStore.getVendors(vendors)
-
-    navigation.navigate('MyList');
-  };
-
   return (
     <SafeAreaView>
       <View style={styles.container}>
