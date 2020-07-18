@@ -37,6 +37,7 @@ import {CustomHeader} from '../../Components/CustomHeader';
 import {Screen, Colors} from '../../Theme';
 import {NrmHeader} from '../../Components';
 import VendorPage from '../../Containers/ProductPreview/VendorPage';
+import ProductPageColor from '../../Containers/ProductPages/ProductPageColor';
 
 const HomeStack = createStackNavigator();
 
@@ -168,6 +169,7 @@ const ListStackNavigator = () => {
           ),
         })}
       />
+
       <ListStack.Screen
         name="ListActionsModal"
         component={ListActionsModal}
@@ -197,6 +199,11 @@ const ListStackNavigator = () => {
         name="ReplacedSkuModal"
         component={ReplacedSkuModal}
         options={() => ({})}
+      />
+      <ListStack.Screen
+        name="ProductPageColor"
+        component={ProductPageColor}
+        options={() => ({headerShown: false})}
       />
     </ListStack.Navigator>
   );
@@ -259,7 +266,18 @@ const ProfileStackNavigator = () => {
       <ProfileStack.Screen
         name="PurchasedProductsPage"
         component={PurchasedProductsPage}
-        options={() => ({})}
+        options={() => ({
+          title: '',
+          headerLeft: () => (
+            <NrmHeader
+              onBack={() => navigation.navigate('Home')}
+              iconName="chevron-left"
+              iconSize={32}
+              iconColor={Colors.GREY_COLOR_LIGHT}
+              iconType="FontAwesome5"
+            />
+          ),
+        })}
       />
       <ProfileStack.Screen
         name="ProductDetail"
@@ -278,7 +296,18 @@ const ProfileStackNavigator = () => {
       <ProfileStack.Screen
         name="ProfileSettings"
         component={ProfileSettings}
-        options={() => ({})}
+        options={({navigation}) => ({
+          title: '',
+          headerLeft: () => (
+            <NrmHeader
+              onBack={() => navigation.pop()}
+              iconName="chevron-left"
+              iconSize={32}
+              iconColor={Colors.GREY_COLOR_LIGHT}
+              iconType="FontAwesome5"
+            />
+          ),
+        })}
       />
       <ProfileStack.Screen
         name="LocationSettings"
@@ -352,21 +381,19 @@ const AuthStackNavigator = () => {
   );
 };
 
-const App = () => {
+const Navigation = () => {
   const [isLogin, setIsLogin] = React.useState(true);
   return (
     <>
-      <NavigationContainer>
-        <RootStack.Navigator headerMode="none">
-          {isLogin ? (
-            <RootStack.Screen name="Main" component={MainTabsNavigator} />
-          ) : (
-            <RootStack.Screen name="Auth" component={AuthStackNavigator} />
-          )}
-        </RootStack.Navigator>
-      </NavigationContainer>
+      <RootStack.Navigator mode="card" headerMode="none">
+        {isLogin ? (
+          <RootStack.Screen name="Main" component={MainTabsNavigator} />
+        ) : (
+          <RootStack.Screen name="Auth" component={AuthStackNavigator} />
+        )}
+      </RootStack.Navigator>
     </>
   );
 };
 
-export default App;
+export default Navigation;

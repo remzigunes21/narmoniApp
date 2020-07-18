@@ -3,40 +3,29 @@ import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 import NrmIcon from '../NrmIcon';
 import {Colors} from '../../Theme';
 
-const NrmInput = ({autoFocus, icon, placeholder, ...props}) => {
-  //   onChangeText(text) {
-  //     const {onChangeText} = this.props;
-  //     this.setState({text});
-  //     if (onChangeText) onChangeText(text);
-  //   }
-
-  //   onPressIcon() {
-  //     let {text} = this.state;
-  //     text = text.trim();
-  //     this.props.onPressIcon(text);
-  //   }
-
+const NrmTextInput = ({
+  onFocus,
+  onBlur,
+  style,
+  value,
+  onChangeText,
+  placeholder,
+  secureTextEntry,
+}) => {
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        autoCapitalize="none"
-        autoFocus={autoFocus}
-        autoCorrect={false}
-        value={props.value}
-        onChangeText={props.onChangeText}
-        underlineColorAndroid="transparent"
-        placeholder={placeholder}
-        placeholderTextColor={Colors.BLACK}
-      />
-      <TouchableOpacity onPress={props.onPressIcon}>
-        <NrmIcon name={icon} size="large" color={Colors.BLACK} />
-      </TouchableOpacity>
-    </View>
+    <TextInput
+      onFocus={onFocus}
+      onBlur={onBlur}
+      style={[style]}
+      value={value}
+      onChangeText={onChangeText}
+      placeholder={placeholder}
+      secureTextEntry={secureTextEntry}
+    />
   );
 };
 
-export default NrmInput;
+export default NrmTextInput;
 
 const styles = StyleSheet.create({
   container: {

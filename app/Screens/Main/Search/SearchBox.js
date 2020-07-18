@@ -30,13 +30,6 @@ const SearchBox = ({
         />
       </TouchableOpacity>
       <TextInput
-        ref={inputRef}
-        // autoFocus
-
-        onFocus={() => {
-          inputRef.current.focus();
-          setIsSetsearchBarFocus(true);
-        }}
         onBlur={() => {
           console.log('blur');
           Keyboard.dismiss();
@@ -52,12 +45,9 @@ const SearchBox = ({
           setsearchTextInput(val);
         }}
         onSubmitEditing={event => {
-          setsearchTextInput(event.nativeEvent.text);
-          if (event.nativeEvent.text.length <= 2) {
+          setsearchTextInput(event);
+          if (event.length <= 2) {
             popup.warning('En az 3 harf girmelisiniz.');
-          } else {
-            storeRecentSearches(event.nativeEvent.text);
-            setSearchText(event.nativeEvent.text);
           }
           // generateLog.search(event.nativeEvent.text)
         }}
@@ -84,7 +74,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 17,
-    fontFamily: 'verdana',
+    fontFamily: Fonts.family.semiBold,
     fontWeight: Platform.OS === 'android' ? 'normal' : undefined,
     flex: 1,
     height: '100%',

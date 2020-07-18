@@ -6,4 +6,6 @@ export default {
   mdPersil: require('../Assets/Images/mdpersil.png'),
   logo: require('../Assets/Images/logo.png'),
   location: require('../Assets/Images/location.png'),
+  persilmd: require('../Assets/Images/percilmd.png'),
+  marketPicture: require('../Assets/Images/market.png'),
 };

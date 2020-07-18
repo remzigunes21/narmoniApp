@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import styles from './styles';
+import NrmSpinner from '../NrmSpinner';
 
 const NrmContainer = ({
   children,
@@ -17,6 +18,7 @@ const NrmContainer = ({
   centered,
   blurRadius,
   androidPadStatusBar,
+  barStyle,
 }) => {
   let containerStyle = {
     ...styles.container,
@@ -43,12 +45,19 @@ const NrmContainer = ({
             width: '100%',
             backgroundColor: tintColor,
           }}>
+          <StatusBar barStyle={barStyle} />
           {children}
         </SafeAreaView>
       </ImageBackground>
     );
   }
-  return <SafeAreaView style={containerStyle}>{children}</SafeAreaView>;
+  return (
+    <SafeAreaView style={containerStyle}>
+      <StatusBar barStyle={barStyle} />
+      {children}
+      <NrmSpinner />
+    </SafeAreaView>
+  );
 };
 
 NrmContainer.propTypes = {

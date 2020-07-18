@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {Colors} from '../NrmCard/node_modules/@Theme';
+import {Colors} from '../../Theme';
 
 const commonContainerStyle = {
   display: 'flex',

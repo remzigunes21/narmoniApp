@@ -1,10 +1,12 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import productReducer from './product/reducer';
+import globalReducer from './global/reducer';
 import Saga from './saga/Saga';
 
 const combinedReducer = combineReducers({
   productReducer: productReducer,
+  global: globalReducer,
 });
 
 const rootReducer = (state, action) => {

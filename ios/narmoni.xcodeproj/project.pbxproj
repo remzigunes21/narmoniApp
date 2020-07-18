@@ -18,6 +18,16 @@
 		2DCD954D1E0B4F2C00145EB5 /* narmoniTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* narmoniTests.m */; };
 		7B96272F1D3422267FCFE6CF /* libPods-narmoni-narmoniTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE4CB977980378F31CDC506 /* libPods-narmoni-narmoniTests.a */; };
 		A686C6FDE768E72271C44C74 /* libPods-narmoni-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F14679D8A8679CA10842D8A /* libPods-narmoni-tvOS.a */; };
+		ADB736AE24C245D6004A2E14 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736A324C245D6004A2E14 /* OpenSans-ExtraBold.ttf */; };
+		ADB736AF24C245D6004A2E14 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736A424C245D6004A2E14 /* OpenSans-Light.ttf */; };
+		ADB736B024C245D6004A2E14 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736A524C245D6004A2E14 /* OpenSans-SemiBold.ttf */; };
+		ADB736B124C245D6004A2E14 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736A624C245D6004A2E14 /* OpenSans-ExtraBoldItalic.ttf */; };
+		ADB736B224C245D6004A2E14 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736A724C245D6004A2E14 /* OpenSans-Bold.ttf */; };
+		ADB736B324C245D6004A2E14 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736A824C245D6004A2E14 /* OpenSans-Regular.ttf */; };
+		ADB736B424C245D6004A2E14 /* OpenSans-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736A924C245D6004A2E14 /* OpenSans-RegularItalic.ttf */; };
+		ADB736B524C245D6004A2E14 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736AA24C245D6004A2E14 /* OpenSans-SemiBoldItalic.ttf */; };
+		ADB736B624C245D6004A2E14 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736AB24C245D6004A2E14 /* OpenSans-BoldItalic.ttf */; };
+		ADB736B824C245D6004A2E14 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB736AD24C245D6004A2E14 /* OpenSans-LightItalic.ttf */; };
 		B4DFAF4F55F91F84ED0A2E2F /* libPods-narmoni-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D85FEE97F418E90644292D /* libPods-narmoni-tvOSTests.a */; };
 		CEC65F4DDFAADC6526A70E5D /* libPods-narmoni.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E3FC1AB8BC2504324205DAC4 /* libPods-narmoni.a */; };
 /* End PBXBuildFile section */
@@ -60,6 +70,16 @@
 		7F14679D8A8679CA10842D8A /* libPods-narmoni-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-narmoni-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D85FEE97F418E90644292D /* libPods-narmoni-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-narmoni-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2D0070D68DE9FBB1D4A332 /* Pods-narmoni-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-narmoni-tvOS.release.xcconfig"; path = "Target Support Files/Pods-narmoni-tvOS/Pods-narmoni-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		ADB736A324C245D6004A2E14 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		ADB736A424C245D6004A2E14 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		ADB736A524C245D6004A2E14 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		ADB736A624C245D6004A2E14 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		ADB736A724C245D6004A2E14 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		ADB736A824C245D6004A2E14 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		ADB736A924C245D6004A2E14 /* OpenSans-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-RegularItalic.ttf"; sourceTree = "<group>"; };
+		ADB736AA24C245D6004A2E14 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		ADB736AB24C245D6004A2E14 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		ADB736AD24C245D6004A2E14 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		B9DF0FD16BBCCAF8DD4627E4 /* Pods-narmoni-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-narmoni-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-narmoni-tvOSTests/Pods-narmoni-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BFE4CB977980378F31CDC506 /* libPods-narmoni-narmoniTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-narmoni-narmoniTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBAF9EC9C671077D4C765538 /* Pods-narmoni-narmoniTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-narmoni-narmoniTests.debug.xcconfig"; path = "Target Support Files/Pods-narmoni-narmoniTests/Pods-narmoni-narmoniTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +179,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				ADB736A224C24572004A2E14 /* fonts */,
 				13B07FAE1A68108700A75B9A /* narmoni */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* narmoniTests */,
@@ -182,6 +203,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		ADB736A224C24572004A2E14 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ADB736A724C245D6004A2E14 /* OpenSans-Bold.ttf */,
+				ADB736AB24C245D6004A2E14 /* OpenSans-BoldItalic.ttf */,
+				ADB736A324C245D6004A2E14 /* OpenSans-ExtraBold.ttf */,
+				ADB736A624C245D6004A2E14 /* OpenSans-ExtraBoldItalic.ttf */,
+				ADB736A424C245D6004A2E14 /* OpenSans-Light.ttf */,
+				ADB736AD24C245D6004A2E14 /* OpenSans-LightItalic.ttf */,
+				ADB736A824C245D6004A2E14 /* OpenSans-Regular.ttf */,
+				ADB736A924C245D6004A2E14 /* OpenSans-RegularItalic.ttf */,
+				ADB736A524C245D6004A2E14 /* OpenSans-SemiBold.ttf */,
+				ADB736AA24C245D6004A2E14 /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		EBF59DAC7612BD440D6DE139 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +232,6 @@
 				B9DF0FD16BBCCAF8DD4627E4 /* Pods-narmoni-tvOSTests.debug.xcconfig */,
 				42C09CA3846D1272A48ADA7B /* Pods-narmoni-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -342,7 +379,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				ADB736B224C245D6004A2E14 /* OpenSans-Bold.ttf in Resources */,
+				ADB736B124C245D6004A2E14 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				ADB736B624C245D6004A2E14 /* OpenSans-BoldItalic.ttf in Resources */,
+				ADB736B424C245D6004A2E14 /* OpenSans-RegularItalic.ttf in Resources */,
+				ADB736B524C245D6004A2E14 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				ADB736B024C245D6004A2E14 /* OpenSans-SemiBold.ttf in Resources */,
+				ADB736AF24C245D6004A2E14 /* OpenSans-Light.ttf in Resources */,
+				ADB736B324C245D6004A2E14 /* OpenSans-Regular.ttf in Resources */,
+				ADB736B824C245D6004A2E14 /* OpenSans-LightItalic.ttf in Resources */,
+				ADB736AE24C245D6004A2E14 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -136,7 +136,7 @@ export class ProductDetail extends Component {
             </View>
           </NrmCard>
 
-          <ColorCard />
+          <ColorCard navigation={this.props.navigation} />
 
           <PriceCard />
 

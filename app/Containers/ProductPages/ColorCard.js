@@ -44,7 +44,10 @@ export class ColorCard extends PureComponent {
             <NrmText.T2D style={{fontSize: 16, fontWeight: 'bold'}}>
               +4
             </NrmText.T2D>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                this.props.navigation.navigate('ProductPageColor')
+              }>
               <NrmIcon
                 name="angle-right"
                 size={32}

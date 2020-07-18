@@ -16,7 +16,7 @@ import {
 import SuggestedLists from '../SuggestedLists';
 
 import {NrmCard, NrmText, NrmIcon} from '../../Components';
-import {Colors} from '../../Theme';
+import {Colors, Fonts} from '../../Theme';
 
 class HomePage extends Component {
   constructor(props) {
@@ -64,8 +64,12 @@ class HomePage extends Component {
               onPress={() => this.props.navigation.navigate('Vendor')}>
               <View style={{marginBottom: 40, marginRight: 50}}>
                 <NrmText.T4W>Hoşgeldin</NrmText.T4W>
-                <NrmText.T3W style={{fontWeight: 'bold'}}>
-                  {'dkskldsdsldsşdddşşsşdş'}
+                <NrmText.T3W
+                  style={{
+                    fontWeight: 'bold',
+                    fontFamily: Fonts.family.boldItalic,
+                  }}>
+                  {'Fatih'}
                 </NrmText.T3W>
               </View>
             </TouchableOpacity>

@@ -1,4 +1,4 @@
-import * as Service from '../../services/CustomHttpService';
+import * as Service from '../../Services/CustomHttpService';
 
 doGet = (endpoint, body) => {
   return Service.axiosGet({
@@ -7,8 +7,6 @@ doGet = (endpoint, body) => {
   });
 };
 
-
-
 doPost = (endpoint, body) => {
   return Service.axiosPost({
     body,
@@ -16,10 +14,9 @@ doPost = (endpoint, body) => {
   });
 };
 
-
-export const doFoursquareGet = (filter) => {
+export const doFoursquareGet = filter => {
   return Service.fourSquareGet({
-   filter
+    filter,
   });
 };
 
@@ -27,40 +24,34 @@ export const getProducts = () => {
   return doGet('/products');
 };
 
-
-export const postProducts = (body) => {
-  return doPost('/products',body);
+export const postProducts = body => {
+  return doPost('/products', body);
 };
 
-export const searchProducts = (filter) => {
-  return doGet('/products'+filter);
+export const searchProducts = filter => {
+  return doGet('/products' + filter);
 };
-
 
 export const getScans = () => {
   return doGet('/scans');
 };
 
-
-export const postScans = (body) => {
-  return doPost('/scans',body);
+export const postScans = body => {
+  return doPost('/scans', body);
 };
 
-export const searchScans = (filter) => {
-  return doGet('/scans'+filter);
+export const searchScans = filter => {
+  return doGet('/scans' + filter);
 };
 
-export const cartCalculate = (body) => {
-  return doPost('/scans/cart/calculate',body);
+export const cartCalculate = body => {
+  return doPost('/scans/cart/calculate', body);
 };
 
-
-export const searchPlaces = (filter) => {
-  return doGet('/locations'+filter);
+export const searchPlaces = filter => {
+  return doGet('/locations' + filter);
 };
 
-
-export const getCurrentPlace = (filter) => {
-
-  return doGet('/locations'+filter);
+export const getCurrentPlace = filter => {
+  return doGet('/locations' + filter);
 };

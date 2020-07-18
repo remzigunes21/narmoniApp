@@ -1,65 +1,39 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import NrmText from '../NrmText';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Colors} from '../../Theme';
-const NrmButton = props => {
-  const {
-    title,
-    backgroundColor,
-    disabled,
-    icon,
-    onPress,
-    style,
-    textStyle,
-  } = props;
+
+const NrmButton = ({
+  title,
+  onPress,
+  style,
+  disabled,
+  onFocus,
+  children,
+  ...props
+}) => {
+  const backgroundColor = disabled
+    ? Colors.GREY_COLOR_LIGHT
+    : style && style.backgroundColor
+    ? style.backgroundColor
+    : Colors.FOOTER_TEXT;
   return (
     <TouchableOpacity
       onPress={onPress}
+      style={style}
       disabled={disabled}
-      style={[styles.container, backgroundColor, style]}>
-      <NrmText>Button</NrmText>
+      onFocus={onFocus}
+      {...props}>
+      {children}
     </TouchableOpacity>
   );
-};
-
-NrmButton.defaultProps = {
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
 };
 
 export default NrmButton;
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 16,
-    paddingBottom: 12,
-    paddingHorizontal: 20,
-
-    shadowColor: Colors.BLACK,
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowRadius: 6,
-
-    borderRadius: 3,
-
+  viewStyle: {
     flexDirection: 'row',
-    alignItems: 'center',
-  },
-  text: {
-    fontFamily: 'verdana',
-    fontSize: 19,
+    justifyContent: 'center',
+    paddingVertical: 8,
   },
 });
-
-NrmButton.propTypes = {
-  onPress: PropTypes.func,
-  icon: PropTypes.element,
-  title: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  style: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-  disabled: PropTypes.bool,
-};
