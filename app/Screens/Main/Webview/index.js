@@ -1,11 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {WebView} from 'react-native-webview';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {View, ActivityIndicator, TouchableOpacity, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-import BaseScreen from '../../BaseScreen';
 
-class WebViews extends BaseScreen {
+class WebViews extends PureComponent {
   render() {
     return (
       <WebView source={{uri: 'https://infinite.red'}} style={{marginTop: 20}} />

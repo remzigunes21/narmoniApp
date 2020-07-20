@@ -1,11 +1,16 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
-import {NavigationContext} from '@react-navigation/native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {Colors} from '../../Theme';
+
 function BottomTabBar({state, descriptors, navigation}) {
+  const focusedOptions = descriptors[state.routes[state.index].key].options;
+
+  if (focusedOptions.tabBarVisible === false) {
+    return null;
+  }
   return (
     <SafeAreaView>
       <View style={styles.container}>

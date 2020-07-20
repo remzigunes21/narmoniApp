@@ -16,9 +16,8 @@ import {
 } from '../../../../Components';
 import {Colors, Images, Fonts} from '../../../../Theme';
 import NrmTextInput from '../../../../Components/NrmInput';
-import BaseScreen from '../../../BaseScreen';
 
-export class ProfileSettings extends BaseScreen {
+export class ProfileSettings extends PureComponent {
   constructor(props) {
     super(props);
 

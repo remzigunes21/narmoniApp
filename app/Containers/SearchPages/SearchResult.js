@@ -4,6 +4,14 @@ import {NrmCard, NrmText, NrmIcon} from '../../Components';
 import {Colors, Images} from '../../Theme';
 
 export class SearchResult extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: 1,
+    };
+  }
+
   render() {
     return (
       <NrmCard style={{width: 180, marginHorizontal: 8}}>
@@ -110,16 +118,12 @@ export class SearchResult extends PureComponent {
         </View>
 
         <TouchableOpacity
-          style={{
-            borderWidth: 1,
-            marginVertical: 4,
-            justifyContent: 'center',
-            alignItems: 'center',
-
-            padding: 4,
-            borderRadius: 10,
-            borderColor: Colors.ORANGE_LIGHT,
-          }}>
+          style={
+            this.state.active == 1
+              ? styles.selectButton
+              : styles.notSelectButton
+          }
+          onPress={() => this.setState({active: 1})}>
           <NrmText.T1G
             style={{
               textAlign: 'center',
@@ -136,17 +140,6 @@ export class SearchResult extends PureComponent {
   }
 }
 
-{
-  /* <NrmIcon
-            name="heart-circle-outline"
-            size={32}
-            type="MaterialCommunityIcons"
-            color={Colors.ORANGE_LIGHT}
-            style={styles.icon}
-            
-          /> */
-}
-
 export default SearchResult;
 
 const styles = StyleSheet.create({
@@ -157,15 +150,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
 
     borderRadius: 20,
-
-    // shadowColor: Colors.GREY,
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 0,
-    // },
-    // shadowOpacity: 0,
-    // shadowRadius: 0,
-    // elevation: 0,
   },
   icon: {},
 
@@ -184,5 +168,25 @@ const styles = StyleSheet.create({
   colorCardContainer: {
     flex: 2,
     marginVertical: 12,
+  },
+  selectButton: {
+    borderWidth: 1,
+    marginVertical: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    padding: 4,
+    borderRadius: 10,
+    borderColor: Colors.ORANGE_LIGHT,
+  },
+  notSelectButton: {
+    borderWidth: 1,
+    marginVertical: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    padding: 4,
+    borderRadius: 10,
+    backgroundColor: Colors.ORANGE_LIGHT,
   },
 });

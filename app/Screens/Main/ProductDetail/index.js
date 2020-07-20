@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {
   Text,
   View,
@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Animated,
 } from 'react-native';
 import {NrmContainer, NrmIcon, NrmCard, NrmText} from '../../../Components';
 import FastImage from 'react-native-fast-image';
@@ -16,15 +17,16 @@ import SameProduct from '../../../Containers/ProductPages/SameProduct';
 import PricesSalesCard from '../../../Containers/ProductPages/PricesSalesCard';
 import PriceCard from '../../../Containers/ProductPages/PriceCard';
 import ProductSalesCard from '../../../Containers/ProductPages/ProductSalesCard';
-import BaseScreen from '../../BaseScreen';
+import {SCREEN_MARGIN} from '../../../config/constant';
 
-export class ProductDetail extends BaseScreen {
+export class ProductDetail extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       isFocus: true,
       active: null,
+      scrollY: new Animated.Value(0),
     };
   }
 
@@ -38,9 +40,74 @@ export class ProductDetail extends BaseScreen {
     const selected = {borderWidth: 2, borderColor: 'red'};
     const unSelected = {border: 'none'};
 
+    const diffClamp = Animated.diffClamp(this.state.scrollY, 0, 45);
+
+    const translateY = diffClamp.interpolate({
+      inputRange: [0, 60],
+
+      outputRange: [0, -45],
+
+      extrapolate: 'clamp',
+    });
+
     return (
-      <NrmContainer style={styles.container}>
-        <ScrollView style={{flex: 4}}>
+      <NrmContainer barStyle="dark-content" style={styles.container}>
+        <Animated.View
+          style={{
+            transform: [{translateY: translateY}],
+            elevation: 4,
+            zIndex: 100,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+
+              backgroundColor: Colors.GREY_COLOR_LIGHT,
+            }}>
+            <View>
+              <TouchableOpacity onPress={() => this.props.navigation.pop()}>
+                <Image
+                  source={Images.leftIcon}
+                  style={{width: 20, height: 20}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12, marginHorizontal: 3}}
+                />
+              </TouchableOpacity>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity
+                style={{marginRight: 4}}
+                onPress={() => navigation.navigate('ProductImageModal')}>
+                <Image
+                  source={Images.alertIcon}
+                  style={{width: 20, height: 20}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12}}
+                />
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+                <Image
+                  source={Images.heart}
+                  style={{width: 20, height: 20}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12, marginHorizontal: 4}}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Animated.View>
+        <ScrollView
+          style={{flex: 4}}
+          scrollEventThrottle={16}
+          onScroll={e => {
+            this.state.scrollY.setValue(e.nativeEvent.contentOffset.y);
+          }}>
           <NrmCard style={styles.card}>
             <View
               style={{
@@ -183,7 +250,7 @@ export class ProductDetail extends BaseScreen {
 export default ProductDetail;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {flex: 1},
   card: {
     flex: 1,
 

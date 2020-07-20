@@ -36,11 +36,15 @@ export class SuggestedLists extends PureComponent {
                 77%
               </NrmText.T2D>
             </TouchableOpacity>
-            <Image
-              source={Images.persil}
-              style={{width: 100, height: 100}}
-              resizeMode="contain"
-            />
+
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('ProductDetail')}>
+              <Image
+                source={Images.persil}
+                style={{width: 100, height: 100}}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
           </View>
           <View>
             <View

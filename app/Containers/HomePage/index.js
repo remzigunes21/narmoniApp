@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {
   View,
   TouchableOpacity,
@@ -18,7 +18,7 @@ import SuggestedLists from '../SuggestedLists';
 import {NrmCard, NrmText, NrmIcon} from '../../Components';
 import {Colors, Fonts} from '../../Theme';
 
-class HomePage extends Component {
+class HomePage extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -125,7 +125,7 @@ class HomePage extends Component {
             [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}],
             {useNativeDriver: true},
           )}>
-          <SuggestedLists />
+          <SuggestedLists navigation={this.props.navigation} />
         </Animated.ScrollView>
       </SafeAreaView>
     );

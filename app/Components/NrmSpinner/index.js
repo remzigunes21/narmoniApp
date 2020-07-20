@@ -1,17 +1,19 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, {Component, PureComponent} from 'react';
+
 import Spinner from 'react-native-loading-spinner-overlay';
 
-class NrmSpinner extends Component {
+class NrmSpinner extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showSpinner: false,
+    };
+  }
+
   render() {
-    return <Spinner visible={this.props.global.showSpinner} />;
+    return <Spinner visible={this.state.showSpinner} />;
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    global: state.global,
-  };
-}
-
-export default connect(mapStateToProps)(NrmSpinner);
+export default NrmSpinner;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Easing, Animated, TouchableOpacity, Text, View} from 'react-native';
+import {Easing, Animated, TouchableOpacity, Image, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -34,11 +34,13 @@ import Settings from '../../Screens/Main/Settings';
 //////////////////Screens/////////
 import BottomTabBar from '../../Components/BottomTabBar';
 import {CustomHeader} from '../../Components/CustomHeader';
-import {Screen, Colors} from '../../Theme';
+import {Screen, Colors, Images} from '../../Theme';
 import {NrmHeader} from '../../Components';
 import VendorPage from '../../Containers/ProductPreview/VendorPage';
 import ProductPageColor from '../../Containers/ProductPages/ProductPageColor';
 import SearchCategory from '../../Screens/Main/Search/SearchCategory';
+
+const isSelect = false;
 
 const HomeStack = createStackNavigator();
 
@@ -52,7 +54,12 @@ const AuthStack = createStackNavigator();
 
 const RootStack = createStackNavigator();
 
-const HomeStackNavigator = () => {
+const HomeStackNavigator = ({navigation, route}) => {
+  if (route.state && route.state.index > 0) {
+    navigation.setOptions({tabBarVisible: false});
+  } else {
+    navigation.setOptions({tabBarVisible: true});
+  }
   return (
     <HomeStack.Navigator
       mode="modal"
@@ -76,7 +83,7 @@ const HomeStackNavigator = () => {
       <HomeStack.Screen
         name="ProductDetail"
         component={ProductDetail}
-        options={() => ({})}
+        options={() => ({headerShown: false})}
       />
       <HomeStack.Screen
         name="ListActionsModal"
@@ -117,58 +124,86 @@ const HomeStackNavigator = () => {
   );
 };
 
-const ListStackNavigator = () => {
+const ListStackNavigator = ({navigation, route}) => {
+  if (route.state && route.state.index > 0) {
+    navigation.setOptions({tabBarVisible: false});
+  } else {
+    navigation.setOptions({tabBarVisible: true});
+  }
   return (
-    <ListStack.Navigator initialRouteName="ProductDetail" mode="modal">
+    <ListStack.Navigator initialRouteName="List" mode="modal">
       <ListStack.Screen name="List" component={MyList} options={() => ({})} />
       <ListStack.Screen
         name="ProductDetail"
         component={ProductDetail}
-        options={({navigation}) => ({
-          gesturesEnabled: true,
-          gestureDirection: 'horizontal',
-          gestureResponseDistance: {horizontal: 300},
-          headerTintColor: Colors.GREY_COLOR_LIGHT,
-          headerStyle: {
-            backgroundColor: Colors.GREY_LIGHT,
+        options={({navigation}) => (
+          {
+            gesturesEnabled: true,
+            gestureDirection: 'horizontal',
+            gestureResponseDistance: {horizontal: 300},
+            headerShown: false,
+
+            // headerTintColor: Colors.GREY_COLOR_LIGHT,
+            // headerStyle: {
+            //   backgroundColor: Colors.GREY_LIGHT,
+            // },
+
+            // title: '',
+            // headerStatusBarHeight: 60,
+            // headerLeft: () => (
+            //   <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            //     <Image
+            //       source={Images.leftIcon}
+            //       style={{width: 20, height: 20}}
+            //       resizeMode="contain"
+            //       style={{marginVertical: 12, marginHorizontal: 3}}
+            //     />
+            //   </TouchableOpacity>
+            // ),
+
+            // headerRight: () => (
+            //   <View
+            //     style={{
+            //       flexDirection: 'row',
+
+            //       justifyContent: 'center',
+            //       alignItems: 'center',
+            //     }}>
+            //     <TouchableOpacity
+            //       onPress={() => navigation.navigate('ProductImageModal')}>
+            //       <Image
+            //         source={Images.alertIcon}
+            //         style={{width: 20, height: 20}}
+            //         resizeMode="contain"
+            //         style={{marginVertical: 12}}
+            //       />
+            //     </TouchableOpacity>
+
+            //     <TouchableOpacity>
+            //       <Image
+            //         source={Images.heart}
+            //         style={{width: 20, height: 20}}
+            //         resizeMode="contain"
+            //         style={{marginVertical: 12, marginHorizontal: 4}}
+            //       />
+            //     </TouchableOpacity>
+            //   </View>
+            // ),
           },
+          ({navigation}) => {
+            let tabBarVisible = true;
+            let routeName =
+              navigation.state.routes[navigation.state.index].routeName;
 
-          title: '',
-          headerLeft: () => (
-            <NrmHeader
-              onBack={() => navigation.navigate('Home')}
-              iconName="angle-left"
-              iconSize={24}
-              iconColor={Colors.WHITE}
-              iconType="Fontisto"
-            />
-          ),
+            if (routeName == 'ProductDetails') {
+              tabBarVisible = false;
+            }
 
-          headerRight: () => (
-            <View
-              style={{
-                flexDirection: 'row',
-
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              <NrmHeader
-                onBack={() => navigation.navigate('Home')}
-                iconName="notifications-circle-outline"
-                iconSize={24}
-                iconColor={Colors.WHITE}
-                iconType="Ionicons"
-              />
-              <NrmHeader
-                onBack={() => navigation.navigate('Home')}
-                iconName="heart-circle-outline"
-                iconSize={32}
-                iconColor={Colors.WHITE}
-                iconType="MaterialCommunityIcons"
-              />
-            </View>
-          ),
-        })}
+            return {
+              tabBarVisible,
+            };
+          }
+        )}
       />
 
       <ListStack.Screen
@@ -210,7 +245,12 @@ const ListStackNavigator = () => {
   );
 };
 
-const SearchStackNavigator = () => {
+const SearchStackNavigator = ({navigation, route}) => {
+  if (route.state && route.state.index > 0) {
+    navigation.setOptions({tabBarVisible: false});
+  } else {
+    navigation.setOptions({tabBarVisible: true});
+  }
   return (
     <SearchStack.Navigator mode="modal">
       <SearchStack.Screen
@@ -266,7 +306,12 @@ const SearchStackNavigator = () => {
   );
 };
 
-const ProfileStackNavigator = () => {
+const ProfileStackNavigator = ({navigation, route}) => {
+  if (route.state && route.state.index > 0) {
+    navigation.setOptions({tabBarVisible: false});
+  } else {
+    navigation.setOptions({tabBarVisible: true});
+  }
   return (
     <ProfileStack.Navigator>
       <ProfileStack.Screen
@@ -347,7 +392,8 @@ const ProfileStackNavigator = () => {
 const MainTabsNavigator = () => {
   return (
     <MainTabs.Navigator
-      tabBarOptions={() => {}}
+      tabBarOptions={() => ({})}
+      screenOptions={({navigation}) => ({})}
       tabBar={props => <BottomTabBar {...props} />}>
       <MainTabs.Screen
         name="Home"

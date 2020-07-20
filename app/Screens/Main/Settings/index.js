@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Text, View} from 'react-native';
-import BaseScreen from '../../BaseScreen';
 
-export class Settings extends BaseScreen {
+export class Settings extends PureComponent {
   render() {
     return (
       <View>

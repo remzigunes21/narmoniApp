@@ -18,6 +18,7 @@ import NrmText from './NrmText';
 import NrmInput from './NrmInput';
 import NrmMdButton from './NrmMdButton';
 import NrmHeader from './NrmHeader';
+import NrmArrowIcon from './NrmArrowIcon';
 
 export {
   NrmCard,
@@ -37,4 +38,5 @@ export {
   NrmInput,
   NrmHeader,
   NrmMdButton,
+  NrmArrowIcon,
 };

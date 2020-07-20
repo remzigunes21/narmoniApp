@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import {Text, View} from 'react-native';
-import BaseScreen from '../../BaseScreen';
 
-export class MyList extends BaseScreen {
+export class MyList extends PureComponent {
   render() {
     return (
       <View>

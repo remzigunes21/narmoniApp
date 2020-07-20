@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef} from 'react';
+import React, {PureComponent} from 'react';
 import {
   StyleSheet,
   Text,
@@ -17,23 +17,21 @@ import {
   NrmCard,
   NrmMdButton,
 } from '../../../Components';
-import SearchBox from './SearchBox';
-import {connect} from 'react-redux';
+
 import {Colors, Fonts} from '../../../Theme';
 import SearchResult from '../../../Containers/SearchPages/SearchResult';
-import {Divider} from 'react-native-elements';
 import SearchFilterIcon from '../../../Containers/SearchPages/SearchFilterIcon';
-import BaseScreen from '../../BaseScreen';
-import {isTablet, SCREEN_MARGIN} from '../../../config/constant';
-import {FlatList} from 'react-native-gesture-handler';
 
-class Search extends BaseScreen {
+import {isTablet, SCREEN_MARGIN} from '../../../config/constant';
+
+class Search extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       searchText: '',
       isFocus: false,
+      searchInProgress: false,
     };
   }
 
@@ -41,7 +39,6 @@ class Search extends BaseScreen {
     this.setState({val});
   };
   render() {
-    const {searchText, isSearchBarFocus} = this.state;
     return (
       <NrmContainer
         barStyle="dark-content"
@@ -127,8 +124,6 @@ class Search extends BaseScreen {
   );
 
   renderSearchDashboard = () => {
-    const {searchHistory, searchBlocks} = this.props;
-
     return (
       <>
         <ScrollView
@@ -142,7 +137,7 @@ class Search extends BaseScreen {
   };
 
   renderSearchResult = () => {
-    const {searchResult, searchInProgress} = this.props;
+    const {searchInProgress} = this.state;
 
     return (
       <>
@@ -186,29 +181,14 @@ class Search extends BaseScreen {
 
   _onClearBtnClicked = () => {
     this.setState({searchText: ''});
-    this.dispatchAction(this.$().CLEAR_SEARCH);
   };
 
   _onChangeText = searchText => {
     this.setState({searchText});
-
-    //  this.dispatchAction(this.$().SEARCH_REQUEST, searchText);
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    searchResult: state.search.searchResult,
-    searchInProgress: state.search.searchInProgress,
-    searchFailed: state.search.searchFailed,
-    searchCompleted: state.search.searchCompleted,
-
-    searchHistory: state.search.searchHistory,
-    searchBlocks: state.search.searchBlocks,
-  };
-}
-
-export default connect(mapStateToProps)(Search);
+export default Search;
 
 const styles = StyleSheet.create({
   container: {

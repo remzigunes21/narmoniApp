@@ -1,7 +1,10 @@
 import React from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Image, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import {Colors, Images} from '../../Theme';
+import {NrmArrowIcon, NrmText} from '../../Components';
 
 function NrmCustomheader({
   onIconClicked,
@@ -24,7 +27,7 @@ function NrmCustomheader({
               size={30}
             />
           ) : (
-            <HypArrowIcon left> </HypArrowIcon>
+            <NrmArrowIcon left> </NrmArrowIcon>
           )}
         </TouchableOpacity>
       ) : (
@@ -34,9 +37,9 @@ function NrmCustomheader({
         {image}
         {/* <Image source={Images.logo} style={styles.hyplogo}></Image> */}
       </View>
-      <HypText numberOfLines={1} style={styles.title}>
+      <NrmText.T1G numberOfLines={1} style={styles.title}>
         {title}
-      </HypText>
+      </NrmText.T1G>
     </View>
   );
 }

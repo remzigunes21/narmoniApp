@@ -8,4 +8,9 @@ export default {
   location: require('../Assets/Images/location.png'),
   persilmd: require('../Assets/Images/percilmd.png'),
   marketPicture: require('../Assets/Images/market.png'),
+  heart: require('../Assets/Images/heart.png'),
+  heartIconFill: require('../Assets/Images/heartIconFill.png'),
+  omoPicture: require('../Assets/Images/omo.png'),
+  alertIcon: require('../Assets/Images/alertIcon.png'),
+  leftIcon: require('../Assets/Images/leftIcon.png'),
 };
