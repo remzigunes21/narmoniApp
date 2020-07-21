@@ -1,15 +1,30 @@
 import React, {PureComponent} from 'react';
-import {Text, View, TouchableOpacity, Image} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Modal,
+  SafeAreaView,
+} from 'react-native';
 import {NrmContainer, NrmIcon, NrmText} from '../../../Components';
 import NrmCustomheader from '../../../Components/NrmCustomheader/index';
 import {Colors, Images, Fonts} from '../../../Theme';
 
 export class ProductImageModal extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      show: false,
+    };
+  }
+
   render() {
     return (
       <NrmContainer
         barStyle="dark-content"
-        style={{backgroundColor: Colors.WHITE}}>
+        style={{backgroundColor: Colors.WHITE, flex: 2}}>
         <View
           style={{
             flexDirection: 'row',
@@ -19,7 +34,7 @@ export class ProductImageModal extends PureComponent {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({show: false})}>
               <NrmIcon
                 name="angle-left"
                 size={44}
@@ -104,6 +119,10 @@ export class ProductImageModal extends PureComponent {
             Ürünle ilgili günlük fiyat bildirimi gönder.
           </NrmText.T1G>
         </View>
+
+        <SafeAreaView
+          style={{flex: 1, backgroundColor: Colors.GREY_DARK, marginTop: 100}}
+        />
       </NrmContainer>
     );
   }

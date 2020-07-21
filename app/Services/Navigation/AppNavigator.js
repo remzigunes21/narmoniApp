@@ -108,7 +108,11 @@ const HomeStackNavigator = ({navigation, route}) => {
       <HomeStack.Screen
         name="Vendor"
         component={VendorPage}
-        options={() => ({headerShown: false})}
+        options={() => ({
+          headerShown: false,
+          gestureEnabled: true,
+          gestureDirection: 'vertical',
+        })}
       />
       <HomeStack.Screen
         name="ChangeSkuAmountModal"
@@ -349,6 +353,7 @@ const ProfileStackNavigator = ({navigation, route}) => {
         component={ProfileSettings}
         options={({navigation}) => ({
           title: '',
+          gestureDirection: 'vertical',
           headerLeft: () => (
             <NrmHeader
               onBack={() => navigation.pop()}
@@ -427,7 +432,7 @@ const AuthStackNavigator = () => {
       <AuthStack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
-        options={() => ({headerTitle: "Şifremi Unuttum'"})}
+        options={() => ({headerTitle: 'Şifremi Unuttum'})}
       />
     </AuthStack.Navigator>
   );

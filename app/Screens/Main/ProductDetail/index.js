@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Animated,
+  SafeAreaView,
+  Modal,
 } from 'react-native';
 import {NrmContainer, NrmIcon, NrmCard, NrmText} from '../../../Components';
 import FastImage from 'react-native-fast-image';
@@ -18,6 +20,7 @@ import PricesSalesCard from '../../../Containers/ProductPages/PricesSalesCard';
 import PriceCard from '../../../Containers/ProductPages/PriceCard';
 import ProductSalesCard from '../../../Containers/ProductPages/ProductSalesCard';
 import {SCREEN_MARGIN} from '../../../config/constant';
+import ProductImageModal from '../../../Containers/Modals/ProductImageModal';
 
 export class ProductDetail extends PureComponent {
   constructor(props) {
@@ -27,6 +30,7 @@ export class ProductDetail extends PureComponent {
       isFocus: true,
       active: null,
       scrollY: new Animated.Value(0),
+      showModal: false,
     };
   }
 
@@ -68,6 +72,15 @@ export class ProductDetail extends PureComponent {
               right: 0,
 
               backgroundColor: Colors.GREY_COLOR_LIGHT,
+
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.25,
+              shadowRadius: 3.84,
+              elevation: 5,
             }}>
             <View>
               <TouchableOpacity onPress={() => this.props.navigation.pop()}>
@@ -82,7 +95,7 @@ export class ProductDetail extends PureComponent {
             <View style={{flexDirection: 'row'}}>
               <TouchableOpacity
                 style={{marginRight: 4}}
-                onPress={() => navigation.navigate('ProductImageModal')}>
+                onPress={() => this.setState({showModal: true})}>
                 <Image
                   source={Images.alertIcon}
                   style={{width: 20, height: 20}}
@@ -90,6 +103,10 @@ export class ProductDetail extends PureComponent {
                   style={{marginVertical: 12}}
                 />
               </TouchableOpacity>
+
+              <Modal transparent={true} visible={this.state.showModal}>
+                <ProductImageModal show={this.state.showModal} />
+              </Modal>
 
               <TouchableOpacity>
                 <Image
@@ -102,6 +119,7 @@ export class ProductDetail extends PureComponent {
             </View>
           </View>
         </Animated.View>
+
         <ScrollView
           style={{flex: 4}}
           scrollEventThrottle={16}
