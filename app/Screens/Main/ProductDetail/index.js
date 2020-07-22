@@ -9,10 +9,14 @@ import {
   Animated,
   SafeAreaView,
   Modal,
+  BackHandler,
 } from 'react-native';
+import {compose} from 'recompose';
+import {inject, observer} from 'mobx-react';
+
 import {NrmContainer, NrmIcon, NrmCard, NrmText} from '../../../Components';
 import FastImage from 'react-native-fast-image';
-import {Images, Colors} from '../../../Theme';
+import {Images, Colors, Fonts} from '../../../Theme';
 import ColorCard from '../../../Containers/ProductPages/ColorCard';
 import ProductDetailCard from '../../../Containers/ProductPages/ProductDetailCard';
 import SameProduct from '../../../Containers/ProductPages/SameProduct';
@@ -31,7 +35,54 @@ export class ProductDetail extends PureComponent {
       active: null,
       scrollY: new Animated.Value(0),
       showModal: false,
+      fakeLoading: true,
+      selectedSkuIndex: 0,
+      cookie: null,
+      quantity: 0,
+      link: '',
+      choice: '',
     };
+  }
+
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      this.setState({fakeLoading: false});
+    }, 100);
+    this.backActionListener = BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.backAction,
+    );
+  }
+  backAction = () => {
+    this.props.navigation.goBack();
+  };
+
+  fetchSkuDetailsAgainListener = ({skuIds}) => {
+    this.props.store.productsStore.getSkus(1);
+    console.log(
+      'ProductDetail -> fetchSkuDetailsAgainListener -> this.props',
+      this.props.store.productsStore.getSkus(1),
+    );
+  };
+
+  componentWillMount() {
+    this.props.store.uiStore.setDetailsPageVisible(true);
+    this.props.store.uiStore.fetchSkuDetailsAgain.addListener(
+      'fetch',
+      this.fetchSkuDetailsAgainListener,
+    );
+  }
+
+  componentWillUnmount() {
+    this.props.store.uiStore.fetchSkuDetailsAgain.removeListener(
+      'fetch',
+      this.fetchSkuDetailsAgainListener,
+    );
+    clearTimeout(this.timer);
+    this.props.store.uiStore.setDetailsPageVisible(false);
+    if (this.backActionListener) {
+      this.backActionListener.remove();
+    }
   }
 
   onPress = active => {
@@ -40,6 +91,8 @@ export class ProductDetail extends PureComponent {
   };
 
   render() {
+    const is_single_sku =
+      this.props.store.productsStore.currentSkus.length === 1;
     const {active} = this.state;
     const selected = {borderWidth: 2, borderColor: 'red'};
     const unSelected = {border: 'none'};
@@ -103,10 +156,6 @@ export class ProductDetail extends PureComponent {
                   style={{marginVertical: 12}}
                 />
               </TouchableOpacity>
-
-              <Modal transparent={true} visible={this.state.showModal}>
-                <ProductImageModal show={this.state.showModal} />
-              </Modal>
 
               <TouchableOpacity>
                 <Image
@@ -260,12 +309,159 @@ export class ProductDetail extends PureComponent {
           <PricesSalesCard />
           <SameProduct />
         </ScrollView>
+
+        {this.renderPriceModal()}
       </NrmContainer>
     );
   }
+
+  renderPriceModal = () => {
+    return (
+      <Modal
+        transparent={true}
+        visible={this.state.showModal}
+        animationType="fade">
+        <NrmContainer
+          barStyle="dark-content"
+          style={{
+            backgroundColor: Colors.WHITE,
+            flex: 1,
+            marginBottom: '100%',
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: 12,
+            },
+            shadowOpacity: 0.58,
+            shadowRadius: 16.0,
+
+            elevation: 24,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity
+                onPress={() => this.setState({showModal: false})}>
+                <NrmIcon
+                  name="angle-left"
+                  size={44}
+                  type="Fontisto"
+                  color={Colors.GREY_COLOR_LIGHT}
+                />
+              </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                marginLeft: 140,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <TouchableOpacity>
+                <Image
+                  source={Images.alertIcon}
+                  style={{width: 50, height: 50}}
+                  resizeMode="contain"
+                  style={{marginVertical: 12}}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View>
+            <View style={{marginHorizontal: 10, marginVertical: 10}}>
+              <NrmText.T1G
+                style={{fontFamily: Fonts.family.semiBold, fontSize: 22}}>
+                Fiyat Bildirimi
+              </NrmText.T1G>
+            </View>
+
+            <View
+              style={{
+                marginHorizontal: 10,
+                marginVertical: 10,
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+              }}>
+              <TouchableOpacity
+                style={{
+                  backgroundColor: Colors.VIOLAET,
+                  borderRadius: 18,
+                  paddingHorizontal: 18,
+                  paddingVertical: 4,
+                }}>
+                <NrmText.T1G
+                  style={{fontFamily: Fonts.family.semiBold, fontSize: 22}}>
+                  Günlük
+                </NrmText.T1G>
+              </TouchableOpacity>
+              <View
+                style={{
+                  height: '100%',
+                  width: 2,
+                  backgroundColor: '#BCC3C3',
+                }}
+              />
+              <TouchableOpacity
+                style={{
+                  backgroundColor: Colors.VIOLAET,
+                  borderRadius: 18,
+                  paddingHorizontal: 18,
+                  paddingVertical: 4,
+                }}>
+                <NrmText.T1G
+                  style={{fontFamily: Fonts.family.semiBold, fontSize: 22}}>
+                  Hedef Fiyat
+                </NrmText.T1G>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          <View>
+            <NrmText.T1G
+              style={{
+                fontFamily: Fonts.family.semiBold,
+                fontSize: 14,
+                marginVertical: 10,
+              }}>
+              Ürünle ilgili günlük fiyat bildirimi gönder.
+            </NrmText.T1G>
+          </View>
+
+          <View
+            style={{
+              justifyContent: 'flex-end',
+              alignItems: 'flex-end',
+              marginTop: '43%',
+            }}>
+            <TouchableOpacity
+              style={{
+                backgroundColor: Colors.ORANGE_LIGHT,
+                borderRadius: 18,
+                paddingHorizontal: 18,
+                paddingVertical: 4,
+              }}>
+              <NrmText.T1G
+                style={{fontFamily: Fonts.family.semiBold, fontSize: 22}}>
+                Günlük
+              </NrmText.T1G>
+            </TouchableOpacity>
+          </View>
+        </NrmContainer>
+      </Modal>
+    );
+  };
 }
 
-export default ProductDetail;
+export default compose(
+  inject('store'),
+  observer,
+)(ProductDetail);
 
 const styles = StyleSheet.create({
   container: {flex: 1},

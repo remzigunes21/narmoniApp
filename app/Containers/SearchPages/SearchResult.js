@@ -21,7 +21,7 @@ export class SearchResult extends PureComponent {
             alignItems: 'center',
             flexDirection: 'row',
           }}>
-          <TouchableOpacity>
+          <TouchableOpacity style={{marginHorizontal: 20}}>
             <Image
               source={Images.persil}
               style={{width: 80, height: 80, marginTop: 10}}
@@ -30,8 +30,6 @@ export class SearchResult extends PureComponent {
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              justifyContent: 'flex-end',
-              alignItems: 'flex-end',
               marginBottom: 50,
             }}>
             <NrmIcon
@@ -49,7 +47,7 @@ export class SearchResult extends PureComponent {
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
 
-            marginVertical: 4,
+            marginVertical: 8,
             flexDirection: 'row',
           }}>
           <NrmText.T1D
@@ -67,7 +65,7 @@ export class SearchResult extends PureComponent {
               justifyContent: 'flex-start',
               width: 100,
               height: 60,
-              marginHorizontal: 8,
+              marginRight: 50,
             }}>
             <NrmText.T1G
               style={{textAlign: 'center', fontSize: 12}}
