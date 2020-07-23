@@ -8,6 +8,8 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
+import {connect} from 'react-redux';
+
 import {
   NrmContainer,
   NrmIcon,
@@ -194,8 +196,11 @@ export class ProfileSettings extends PureComponent {
     );
   };
 }
+function mapStateToProps(state) {
+  return {};
+}
 
-export default ProfileSettings;
+export default connect(mapStateToProps)(ProfileSettings);
 
 const styles = StyleSheet.create({
   avatar: {

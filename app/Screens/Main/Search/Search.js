@@ -17,6 +17,7 @@ import {
   NrmCard,
   NrmMdButton,
 } from '../../../Components';
+import {connect} from 'react-redux';
 
 import {Colors, Fonts} from '../../../Theme';
 import SearchResult from '../../../Containers/SearchPages/SearchResult';
@@ -188,7 +189,11 @@ class Search extends PureComponent {
   };
 }
 
-export default Search;
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps)(Search);
 
 const styles = StyleSheet.create({
   container: {

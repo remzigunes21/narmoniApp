@@ -7,6 +7,8 @@ import {
   Animated,
 } from 'react-native';
 
+import {connect} from 'react-redux';
+
 import {
   styles,
   HEADER_MAX_HEIGHT,
@@ -17,8 +19,9 @@ import SuggestedLists from '../SuggestedLists';
 
 import {NrmCard, NrmText, NrmIcon} from '../../Components';
 import {Colors, Fonts} from '../../Theme';
+import BaseScreen from '../../Screens/BaseScreen';
 
-class HomePage extends PureComponent {
+class HomePage extends BaseScreen {
   constructor(props) {
     super(props);
 
@@ -136,4 +139,8 @@ class HomePage extends PureComponent {
   }
 }
 
-export default HomePage;
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps)(HomePage);

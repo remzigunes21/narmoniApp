@@ -6,13 +6,13 @@ import {AppRegistry, View, Text, Platform} from 'react-native';
 import React, {Component} from 'react';
 import {name as appName} from './app.json';
 
-import {Provider, observer} from 'mobx-react';
+import {Provider} from 'react-redux';
+import store from './app/redux/configureStore';
 
 import Navigation from './app/Services/Navigation/AppNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 
-import mainStore from './app/Providers/MobX/mainStore';
 import {AppState} from 'react-native';
 
 Text.defaultProps = Text.defaultProps || {};
@@ -25,7 +25,6 @@ if (Platform.OS == 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const store = mainStore;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -64,6 +63,6 @@ class App extends Component {
   }
 }
 
-export default observer(App);
+export default App;
 
 AppRegistry.registerComponent(appName, () => App);

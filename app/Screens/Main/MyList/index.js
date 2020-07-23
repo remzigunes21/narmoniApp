@@ -1,7 +1,10 @@
 import React, {Component, PureComponent} from 'react';
 import {Text, View} from 'react-native';
+import {connect} from 'react-redux';
 
-export class MyList extends PureComponent {
+import BaseScreen from '../../BaseScreen';
+
+export class MyList extends BaseScreen {
   render() {
     return (
       <View>
@@ -11,4 +14,8 @@ export class MyList extends PureComponent {
   }
 }
 
-export default MyList;
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps)(MyList);

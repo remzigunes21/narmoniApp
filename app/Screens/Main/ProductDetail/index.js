@@ -11,8 +11,7 @@ import {
   Modal,
   BackHandler,
 } from 'react-native';
-import {compose} from 'recompose';
-import {inject, observer} from 'mobx-react';
+import {connect} from 'react-redux';
 
 import {NrmContainer, NrmIcon, NrmCard, NrmText} from '../../../Components';
 import FastImage from 'react-native-fast-image';
@@ -24,9 +23,10 @@ import PricesSalesCard from '../../../Containers/ProductPages/PricesSalesCard';
 import PriceCard from '../../../Containers/ProductPages/PriceCard';
 import ProductSalesCard from '../../../Containers/ProductPages/ProductSalesCard';
 import {SCREEN_MARGIN} from '../../../config/constant';
-import ProductImageModal from '../../../Containers/Modals/ProductImageModal';
 
-export class ProductDetail extends PureComponent {
+import BaseScreen from '../../BaseScreen';
+
+export class ProductDetail extends BaseScreen {
   constructor(props) {
     super(props);
 
@@ -458,10 +458,11 @@ export class ProductDetail extends PureComponent {
   };
 }
 
-export default compose(
-  inject('store'),
-  observer,
-)(ProductDetail);
+function mapStateToProps(state) {
+  return {};
+}
+
+export default connect(mapStateToProps)(ProductDetail);
 
 const styles = StyleSheet.create({
   container: {flex: 1},
