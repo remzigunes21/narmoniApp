@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import {Text, View} from 'react-native';
-import {connect} from 'react-redux';
 
 export class Settings extends PureComponent {
   render() {
@@ -11,8 +10,5 @@ export class Settings extends PureComponent {
     );
   }
 }
-function mapStateToProps(state) {
-  return {};
-}
 
-export default connect(mapStateToProps)(Settings);
+export default Settings;

@@ -7,8 +7,6 @@ import {
   Animated,
 } from 'react-native';
 
-import {connect} from 'react-redux';
-
 import {
   styles,
   HEADER_MAX_HEIGHT,
@@ -19,9 +17,8 @@ import SuggestedLists from '../SuggestedLists';
 
 import {NrmCard, NrmText, NrmIcon} from '../../Components';
 import {Colors, Fonts} from '../../Theme';
-import BaseScreen from '../../Screens/BaseScreen';
 
-class HomePage extends BaseScreen {
+class HomePage extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -144,6 +141,7 @@ class HomePage extends BaseScreen {
   }
 }
 
+<<<<<<< HEAD
 function mapStateToProps(state) {
   return {
     currentSkus: state.product.currentSkus,
@@ -151,3 +149,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(HomePage);
+=======
+export default HomePage;
+>>>>>>> parent of 4b28c20... saga integrated

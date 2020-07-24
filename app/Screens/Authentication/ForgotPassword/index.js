@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import {Text, View} from 'react-native';
-import {connect} from 'react-redux';
 
 export class ForgotPassword extends PureComponent {
   render() {
@@ -12,8 +11,4 @@ export class ForgotPassword extends PureComponent {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps)(ForgotPassword);
+export default ForgotPassword;

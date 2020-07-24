@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Text, StyleSheet, View} from 'react-native';
-import {connect} from 'react-redux';
 
 class ExtraUserInfo extends Component {
   render() {
@@ -12,10 +11,6 @@ class ExtraUserInfo extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps)(ExtraUserInfo);
+export default ExtraUserInfo;
 
 const styles = StyleSheet.create({});
