@@ -1,8 +1,9 @@
-import * as $ from "../actionTypes";
+import * as $ from '../actionTypes';
 
 const initialState = {
   user: null,
   loggedIn: false,
+  location: null,
 
   isEmailExist: false,
   checkEmailInProgress: false,
@@ -21,20 +22,9 @@ const initialState = {
   autoLoginFailed: false,
   autoLoginCompleted: false,
 
-  favoriteList: [],
   updateProfileInProgress: false,
   updateProfileFailed: false,
   updateProfileCompleted: false,
-
-  startedBookList: [],
-  getStartedBookListInProgress: false,
-  getStartedBookListFailed: false,
-  getStartedBookListCompleted: false,
-
-  finishedBookList: [],
-  getFinishedBookListInProgress: false,
-  getFinishedBookListFailed: false,
-  getFinishedBookListCompleted: false
 };
 
 export default (state = initialState, action) => {
@@ -44,7 +34,7 @@ export default (state = initialState, action) => {
       ...state,
       checkEmailInProgress: true,
       checkEmailFailed: false,
-      checkEmailCompleted: false
+      checkEmailCompleted: false,
     };
   }
   if (type === $.EMAIL_CHECK_SUCCESS) {
@@ -53,7 +43,7 @@ export default (state = initialState, action) => {
       isEmailExist: payload,
       checkEmailInProgress: false,
       checkEmailFailed: false,
-      checkEmailCompleted: true
+      checkEmailCompleted: true,
     };
   }
   if (type === $.EMAIL_CHECK_FAILURE) {
@@ -62,7 +52,7 @@ export default (state = initialState, action) => {
 
       checkEmailInProgress: false,
       checkEmailFailed: true,
-      checkEmailCompleted: false
+      checkEmailCompleted: false,
     };
   }
   if (type === $.EMAIL_CHECK_RESET) {
@@ -71,7 +61,7 @@ export default (state = initialState, action) => {
       isEmailExist: false,
       checkEmailInProgress: false,
       checkEmailFailed: false,
-      checkEmailCompleted: false
+      checkEmailCompleted: false,
     };
   }
 
@@ -80,7 +70,7 @@ export default (state = initialState, action) => {
       ...state,
       registerInProgress: true,
       registerFailed: false,
-      registerCompleted: false
+      registerCompleted: false,
     };
   }
   if (type === $.REGISTER_SUCCESS) {
@@ -91,7 +81,7 @@ export default (state = initialState, action) => {
 
       registerInProgress: false,
       registerFailed: false,
-      registerCompleted: true
+      registerCompleted: true,
     };
   }
   if (type === $.REGISTER_FAILURE) {
@@ -99,7 +89,7 @@ export default (state = initialState, action) => {
       ...state,
       registerInProgress: false,
       registerFailed: true,
-      registerCompleted: true
+      registerCompleted: true,
     };
   }
   if (type === $.REGISTER_RESET) {
@@ -107,16 +97,20 @@ export default (state = initialState, action) => {
       ...state,
       registerInProgress: false,
       registerFailed: false,
-      registerCompleted: false
+      registerCompleted: false,
     };
   }
 
-  if (type === $.LOGIN_REQUEST || type === $.SOCIAL_LOGIN_REQUEST || type === $.APPLE_LOGIN_WITHOUT_EMAIL_REQUEST) {
+  if (
+    type === $.LOGIN_REQUEST ||
+    type === $.SOCIAL_LOGIN_REQUEST ||
+    type === $.APPLE_LOGIN_WITHOUT_EMAIL_REQUEST
+  ) {
     return {
       ...state,
       loginInProgress: true,
       loginFailed: false,
-      loginCompleted: false
+      loginCompleted: false,
     };
   }
   if (type === $.LOGIN_SUCCESS) {
@@ -127,7 +121,7 @@ export default (state = initialState, action) => {
 
       loginInProgress: false,
       loginFailed: false,
-      loginCompleted: true
+      loginCompleted: true,
     };
   }
   if (type === $.LOGIN_FAILURE) {
@@ -135,7 +129,7 @@ export default (state = initialState, action) => {
       ...state,
       loginInProgress: false,
       loginFailed: true,
-      loginCompleted: true
+      loginCompleted: true,
     };
   }
   if (type === $.LOGIN_RESET) {
@@ -143,7 +137,7 @@ export default (state = initialState, action) => {
       ...state,
       loginInProgress: false,
       loginFailed: false,
-      loginCompleted: false
+      loginCompleted: false,
     };
   }
 
@@ -152,7 +146,7 @@ export default (state = initialState, action) => {
       ...state,
       autoLoginInProgress: true,
       autoLoginFailed: false,
-      autoLoginCompleted: false
+      autoLoginCompleted: false,
     };
   }
   if (type === $.AUTO_LOGIN_SUCCESS) {
@@ -163,7 +157,7 @@ export default (state = initialState, action) => {
 
       autoLoginInProgress: false,
       autoLoginFailed: false,
-      autoLoginCompleted: true
+      autoLoginCompleted: true,
     };
   }
   if (type === $.AUTO_LOGIN_FAILURE) {
@@ -171,7 +165,7 @@ export default (state = initialState, action) => {
       ...state,
       autoLoginInProgress: false,
       autoLoginFailed: true,
-      autoLoginCompleted: true
+      autoLoginCompleted: true,
     };
   }
   if (type === $.AUTO_LOGIN_RESET) {
@@ -179,7 +173,7 @@ export default (state = initialState, action) => {
       ...state,
       autoLoginInProgress: false,
       autoLoginFailed: false,
-      autoLoginCompleted: false
+      autoLoginCompleted: false,
     };
   }
 
@@ -189,19 +183,19 @@ export default (state = initialState, action) => {
 
     return {
       ...state,
-      favoriteList: newFavlist
+      favoriteList: newFavlist,
     };
   }
   if (type === $.UNFAVORITE_SUMMARY_REQUEST) {
     return {
       ...state,
-      favoriteList: state.favoriteList.filter(sum => sum._id !== payload._id)
+      favoriteList: state.favoriteList.filter(sum => sum._id !== payload._id),
     };
   }
   if (type === $.GET_FAVORITE_LIST_SUCCESS) {
     return {
       ...state,
-      favoriteList: payload
+      favoriteList: payload,
     };
   }
   if (type === $.GET_STARTED_BOOKS_REQUEST) {
@@ -209,7 +203,7 @@ export default (state = initialState, action) => {
       ...state,
       getStartedBookListInProgress: true,
       getStartedBookListFailed: false,
-      getStartedBookListCompleted: false
+      getStartedBookListCompleted: false,
     };
   }
   if (type === $.GET_STARTED_BOOKS_SUCCESS) {
@@ -218,7 +212,7 @@ export default (state = initialState, action) => {
       startedBookList: action.payload,
       getStartedBookListInProgress: false,
       getStartedBookListFailed: false,
-      getStartedBookListCompleted: true
+      getStartedBookListCompleted: true,
     };
   }
   if (type === $.GET_STARTED_BOOKS_FAILURE) {
@@ -226,7 +220,7 @@ export default (state = initialState, action) => {
       ...state,
       getStartedBookListInProgress: false,
       getStartedBookListFailed: true,
-      getStartedBookListCompleted: true
+      getStartedBookListCompleted: true,
     };
   }
   if (type === $.GET_STARTED_BOOKS_RESET) {
@@ -234,7 +228,7 @@ export default (state = initialState, action) => {
       ...state,
       getStartedBookListInProgress: false,
       getStartedBookListFailed: false,
-      getStartedBookListCompleted: false
+      getStartedBookListCompleted: false,
     };
   }
 
@@ -243,7 +237,7 @@ export default (state = initialState, action) => {
       ...state,
       getFinishedBookListInProgress: true,
       getFinishedBookListFailed: false,
-      getFinishedBookListCompleted: false
+      getFinishedBookListCompleted: false,
     };
   }
   if (type === $.GET_FINISHED_BOOKS_SUCCESS) {
@@ -252,7 +246,7 @@ export default (state = initialState, action) => {
       finishedBookList: action.payload,
       getFinishedBookListInProgress: false,
       getFinishedBookListFailed: false,
-      getFinishedBookListCompleted: true
+      getFinishedBookListCompleted: true,
     };
   }
   if (type === $.GET_FINISHED_BOOKS_FAILURE) {
@@ -260,7 +254,7 @@ export default (state = initialState, action) => {
       ...state,
       getFinishedBookListInProgress: false,
       getFinishedBookListFailed: true,
-      getFinishedBookListCompleted: true
+      getFinishedBookListCompleted: true,
     };
   }
   if (type === $.GET_FINISHED_BOOKS_RESET) {
@@ -268,7 +262,7 @@ export default (state = initialState, action) => {
       ...state,
       getFinishedBookListInProgress: false,
       getFinishedBookListFailed: false,
-      getFinishedBookListCompleted: false
+      getFinishedBookListCompleted: false,
     };
   }
 
@@ -277,7 +271,7 @@ export default (state = initialState, action) => {
       ...state,
       updateProfileInProgress: true,
       updateProfileFailed: false,
-      updateProfileCompleted: false
+      updateProfileCompleted: false,
     };
   }
   if (type === $.UPDATE_PROFILE_SUCCESS) {
@@ -285,7 +279,7 @@ export default (state = initialState, action) => {
       ...state,
       updateProfileInProgress: false,
       updateProfileFailed: false,
-      updateProfileCompleted: true
+      updateProfileCompleted: true,
     };
   }
   if (type === $.UPDATE_PROFILE_FAILURE) {
@@ -293,7 +287,7 @@ export default (state = initialState, action) => {
       ...state,
       updateProfileInProgress: false,
       updateProfileFailed: true,
-      updateProfileCompleted: true
+      updateProfileCompleted: true,
     };
   }
   if (type === $.UPDATE_PROFILE_RESET) {
@@ -301,14 +295,14 @@ export default (state = initialState, action) => {
       ...state,
       updateProfileInProgress: false,
       updateProfileFailed: false,
-      updateProfileCompleted: false
+      updateProfileCompleted: false,
     };
   }
 
   if (type === $.SET_PROFILE) {
     return {
       ...state,
-      user: payload
+      user: payload,
     };
   }
 

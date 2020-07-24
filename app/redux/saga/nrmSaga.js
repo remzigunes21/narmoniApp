@@ -4,18 +4,30 @@ import nrmApi from './configureApi';
 import * as $ from '../actionTypes';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Linking, Platform} from 'react-native';
-import reduxSagaFirebase from '../../Services/Firebase';
 
 import {GoogleSignin} from '@react-native-community/google-signin';
 
 import {LoginManager} from 'react-native-fbsdk';
 
 import DeviceInfo from 'react-native-device-info';
+import Firebase from '../../Services/Firebase';
+import reduxSagaFirebase from '../../Services/Firebase';
 
 const activeDeviceId = DeviceInfo.getUniqueId();
 
 const $A = function(type, payload) {
   return {type, payload};
+};
+
+const demoSaga = function*(action) {
+  console.log('action', action);
+  try {
+    const data = yield call(Firebase.db.getMultipleSkus, action.payload);
+    console.log('action.payload', action.payload);
+    console.log('data', data);
+    yield put($A($.GET_SKU_SUCCESS, data));
+    console.log('data', data);
+  } catch (error) {}
 };
 
 ///login start/////
@@ -422,5 +434,6 @@ export default (nrmSaga = function* () {
 
 
   yield takeLatest($.RESENT_EMAIL_CONFIRM_REQUEST,resentEmailConfirmedSaga);
+  yield takeLatest($.GET_SKU_REQUEST,demoSaga);
 
 });

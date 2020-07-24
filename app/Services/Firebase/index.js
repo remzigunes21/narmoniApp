@@ -154,6 +154,6 @@ const Firebase = {
   },
 };
 
-const reduxSagaFirebase = new ReduxSagaFirebase(Firebase);
+//const reduxSagaFirebase = new ReduxSagaFirebase(Firebase);
 
-export default reduxSagaFirebase;
+export default Firebase;

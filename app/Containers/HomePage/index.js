@@ -32,8 +32,13 @@ class HomePage extends BaseScreen {
     };
   }
 
+  componentDidMount() {
+    this.dispatchAction(this.$().GET_SKU_REQUEST), 31;
+  }
+
   renderContent() {
-    // const {store} = this.props;
+    const {currentSkus} = this.props;
+    console.log('HomePage -> renderContent -> currentSkus', currentSkus);
     // const {uiStore, authStore, searchStore} = store;
     // const {locationInfo} = authStore;
     const {scrollY} = this.state;
@@ -140,7 +145,9 @@ class HomePage extends BaseScreen {
 }
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    currentSkus: state.product.currentSkus,
+  };
 }
 
 export default connect(mapStateToProps)(HomePage);
