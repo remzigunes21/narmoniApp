@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Screen, Colors } from '@Theme'
+import {StyleSheet} from 'react-native';
+import {Screen, Colors} from '../../../Theme';
 
 export default StyleSheet.create({
   titleContainer: {
@@ -7,7 +7,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginBottom: 15
+    marginBottom: 15,
   },
   icon: {
     width: 80,
@@ -36,4 +36,4 @@ export default StyleSheet.create({
     height: 1,
     backgroundColor: Colors.PRIMARY,
   },
-})
+});

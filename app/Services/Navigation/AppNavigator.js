@@ -3,6 +3,8 @@ import {Easing, Animated, TouchableOpacity, Image, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import mainStore from '../../Providers/MobX/mainStore';
 ////////////////////Continer
 import ListActionsModal from '../../Containers/Modals/ListActionsModal';
 import ProductImageModal from '../../Containers/Modals/ProductImageModal';
@@ -39,8 +41,10 @@ import {NrmHeader} from '../../Components';
 import VendorPage from '../../Containers/ProductPreview/VendorPage';
 import ProductPageColor from '../../Containers/ProductPages/ProductPageColor';
 import SearchCategory from '../../Screens/Main/Search/SearchCategory';
+import {compose} from 'recompose';
+import {inject, observer} from 'mobx-react';
 
-const isSelect = false;
+const store = mainStore;
 
 const HomeStack = createStackNavigator();
 
@@ -123,6 +127,23 @@ const HomeStackNavigator = ({navigation, route}) => {
         name="ReplacedSkuModal"
         component={ReplacedSkuModal}
         options={() => ({})}
+      />
+      <HomeStack.Screen
+        name="ProfileSettings"
+        component={ProfileSettings}
+        options={({navigation}) => ({
+          title: '',
+          gestureDirection: 'horizontal-inverted',
+          headerLeft: () => (
+            <NrmHeader
+              onBack={() => navigation.pop()}
+              iconName="chevron-left"
+              iconSize={32}
+              iconColor={Colors.GREY_COLOR_LIGHT}
+              iconType="FontAwesome5"
+            />
+          ),
+        })}
       />
     </HomeStack.Navigator>
   );
@@ -427,7 +448,7 @@ const MainTabsNavigator = () => {
 
 const AuthStackNavigator = () => {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator initialRouteName="Login">
       <AuthStack.Screen name="Login" component={Login} />
       <AuthStack.Screen
         name="ForgotPassword"
@@ -438,12 +459,13 @@ const AuthStackNavigator = () => {
   );
 };
 
-const Navigation = () => {
-  const [isLogin, setIsLogin] = React.useState(true);
+const Navigation = ({isLogin}) => {
+  console.log('Navigation -> isLogin', isLogin);
+
   return (
     <>
       <RootStack.Navigator mode="card" headerMode="none">
-        {isLogin ? (
+        {!isLogin ? (
           <RootStack.Screen name="Main" component={MainTabsNavigator} />
         ) : (
           <RootStack.Screen name="Auth" component={AuthStackNavigator} />
@@ -453,7 +475,10 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default compose(
+  inject('store'),
+  observer,
+)(Navigation);
 
 // const SCREEN_NAMES = {
 //   //Stacks name

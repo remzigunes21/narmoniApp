@@ -17,6 +17,8 @@ import SuggestedLists from '../SuggestedLists';
 
 import {NrmCard, NrmText, NrmIcon} from '../../Components';
 import {Colors, Fonts} from '../../Theme';
+import {compose} from 'recompose';
+import {inject, observer} from 'mobx-react';
 
 class HomePage extends PureComponent {
   constructor(props) {
@@ -29,15 +31,11 @@ class HomePage extends PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.dispatchAction(this.$().GET_SKU_REQUEST), 31;
-  }
-
   renderContent() {
-    const {currentSkus} = this.props;
-    console.log('HomePage -> renderContent -> currentSkus', currentSkus);
-    // const {uiStore, authStore, searchStore} = store;
-    // const {locationInfo} = authStore;
+    const {uiStore, authStore, searchStore} = this.props.store;
+    console.log('HomePage -> renderContent -> uiStore', uiStore);
+    const {locationInfo} = authStore;
+
     const {scrollY} = this.state;
 
     const headerTranslate = scrollY.interpolate({
@@ -66,7 +64,7 @@ class HomePage extends PureComponent {
           <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <TouchableOpacity
               style={styles.location}
-              onPress={() => this.props.navigation.navigate('Vendor')}>
+              onPress={() => this.props.navigation.navigate('ProfileSettings')}>
               <View style={{marginBottom: 40, marginRight: 50}}>
                 <NrmText.T4W>Hoşgeldin</NrmText.T4W>
                 <NrmText.T3W
@@ -141,14 +139,7 @@ class HomePage extends PureComponent {
   }
 }
 
-<<<<<<< HEAD
-function mapStateToProps(state) {
-  return {
-    currentSkus: state.product.currentSkus,
-  };
-}
-
-export default connect(mapStateToProps)(HomePage);
-=======
-export default HomePage;
->>>>>>> parent of 4b28c20... saga integrated
+export default compose(
+  inject('store'),
+  observer,
+)(HomePage);

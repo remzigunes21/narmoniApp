@@ -14,6 +14,8 @@ import 'react-native-gesture-handler';
 
 import mainStore from './app/Providers/MobX/mainStore';
 import {AppState} from 'react-native';
+import {Loading} from './app/Components';
+import {Screen, Colors} from './app/Theme';
 
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
@@ -30,7 +32,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {ready: false};
     this.appState = AppState.currentState;
   }
 
@@ -52,11 +54,42 @@ class App extends Component {
     }
     this.appState = nextAppState;
   };
+  startup = async () => {
+    if (!this.state.ready) {
+      store.authStore.init();
+    }
+
+    return await this.setState({ready: true});
+  };
   render() {
-    return (
+    const ready = this.state.ready && store.authStore.initCompleted;
+    const isLogin = store.authStore.user
+      ? store.authStore.locationInfo
+        ? true
+        : true
+      : false;
+    if (ready) {
+      const isLogin = store.authStore.user
+        ? store.authStore.locationInfo
+          ? true
+          : true
+        : false;
+    }
+    return !ready ? (
+      <View
+        style={{
+          width: Screen.width,
+          height: Screen.height,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: Colors.WHITE,
+        }}>
+        <Loading />
+      </View>
+    ) : (
       <Provider store={store}>
         <NavigationContainer>
-          <Navigation />
+          <Navigation isLogin={isLogin} />
           {/* <AlertPop /> */}
         </NavigationContainer>
       </Provider>

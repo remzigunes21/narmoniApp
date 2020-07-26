@@ -11,6 +11,7 @@ import MenuButton from './MenuButton';
 import RoundedButton from './RoundedButton';
 
 import BottomTabBar from './BottomTabBar';
+import Button from './Button';
 
 ////////////////////////////////
 import NrmButton from './NrmButton';
@@ -19,8 +20,10 @@ import NrmInput from './NrmInput';
 import NrmMdButton from './NrmMdButton';
 import NrmHeader from './NrmHeader';
 import NrmArrowIcon from './NrmArrowIcon';
+import Container from './Container';
 
 export {
+  Container,
   NrmCard,
   NrmContainer,
   CustomHeader,
@@ -28,6 +31,7 @@ export {
   CustomModal,
   NrmIcon,
   Input,
+  Button,
   ItemSeperator,
   Loading,
   MenuButton,

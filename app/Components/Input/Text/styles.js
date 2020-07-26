@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Screen, Fonts } from '@Theme'
+import {StyleSheet} from 'react-native';
+import {Colors, Screen, Fonts} from '../../../Theme';
 
 export const getContainerStyle = (hasError, isFocused, value, anim) => ({
   height: anim.interpolate({
@@ -13,12 +13,12 @@ export const getContainerStyle = (hasError, isFocused, value, anim) => ({
   backgroundColor: Colors.WHITE,
   borderWidth: 1,
   borderColor: hasError ? Colors.ERROR : Colors.GREY,
-})
+});
 
-export const getLabelStyle = (deactive) => ({
+export const getLabelStyle = deactive => ({
   opacity: deactive ? 0.5 : 1,
   letterSpacing: 1,
-})
+});
 
 export const getInputStyle = (preText, value) => ({
   height: 50,
@@ -26,7 +26,7 @@ export const getInputStyle = (preText, value) => ({
   color: Colors.DARK,
   fontSize: 18,
   paddingLeft: 20 + (preText && value ? preText.length * 7 + 4 : 0),
-})
+});
 
 export const styles = StyleSheet.create({
   preText: {
@@ -42,4 +42,4 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 20,
   },
-})
+});
